@@ -1,0 +1,28 @@
+
+.contact-info .contact-info-left i {
+
+  background-color: #009345;
+  color:#fff;
+  padding: 12px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 150px;
+  border-radius: 10px;
+  font-size: 10px;
+}
+.contact-info .contact-info-right {
+   font-size: 22px;
+   
+}
+.contact-info .contact-info-right span {
+  letter-spacing: 1px;
+  color: #666;
+  font-size: 18px;
+}
+
+.btn-contact{
+  background-color: #009345;
+}
+
+.btn-contact:hover{
+  background-color: #009345;
+}

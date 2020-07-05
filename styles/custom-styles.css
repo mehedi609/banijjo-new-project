@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  /*background: #ecf3ec;*/
+}
+
+body a:hover {
+  text-decoration: none;
+  color: #009345;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/*bootstrap custom starts*/
+.text-primary {
+  color: #009345 !important;
+}
+.card-title {
+  margin-bottom: 0.25rem;
+}
+
+.card-body {
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+}
+
+.nav-link {
+  font-size: 12px;
+  padding: 5px 4px;
+  color: #666;
+}
+
+.nav-link:hover {
+  color: #009345;
+}
+
+.nav-link-custom::after {
+  content: "|";
+  color: #009345;
+  line-height: 1px;
+  padding-left: 4px;
+}
+
+.list-group-item {
+  padding: 5px 5px;
+}
+
+.btn-outline-success {
+  color: #212529;
+  border-color: #009345;
+}
+
+.btn-outline-success:hover {
+  color: #ffffff;
+  border-color: #009345;
+  background: #009345;
+}
+/*bootstrap custom ends*/
+
+/*cusrom 3 and 5 equal columns starts*/
+.col-3ths,
+.col-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-3ths {
+  width: 33.33%;
+  float: left;
+}
+
+.col-5ths {
+  width: 20%;
+  float: left;
+}
+
+@media (min-width: 768px) {
+  .col-sm-5ths {
+    width: 20%;
+    float: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-5ths {
+    width: 20%;
+    float: left;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-lg-5ths {
+    width: 20%;
+    float: left;
+  }
+}
+/*5 equal columns starts*/
+
+.no-border-radius {
+  border-radius: 0;
+}
+
+.react-multiple-carousel__arrow{
+  z-index: 0;
+}

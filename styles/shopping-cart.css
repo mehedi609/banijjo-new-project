@@ -1,0 +1,54 @@
+/*shopping cart page Design*/
+
+.btn-apply{
+	background-color:#009345;
+}
+
+.btn-place-order{
+	background-color:#EB1C22;
+	border-color:#EB1C22;
+	color: #ffffff;
+	text-align: center;
+	font-size:16px;
+	font-weight:bold;
+
+}
+
+.btn-primary.btn-place-order:hover{
+	color:#ffffff;
+    background-color: #EB1C22;
+}
+
+.btn-continue-shop{
+	background-color:#009345;
+	color:#ffffff;
+	text-align: center;
+	font-size:16px;
+	font-weight:bold;
+}
+
+.btn-primary.btn-continue-shop:hover{
+	color:#ffffff;
+    background-color: #009345;
+}
+
+.promotion-modal{
+ display: none !important;
+}
+.strong-left-subtotal{
+	font-size:14px;
+	font-weight:700;
+}
+.strong-left-vat{
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.strong-left-discount{
+	font-size:14px;
+	font-style:italic;
+}
+.strong-left-order{
+	font-size: 16;
+	font-weight: 700;
+}
