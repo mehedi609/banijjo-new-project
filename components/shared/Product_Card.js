@@ -13,6 +13,8 @@ const Product_Card = ({ product }) => {
               <img 
                 className="card-img-top"
                 src={`${fileUrl}/upload/product/productImages/${product.home_image}`}
+                onMouseOver={e => (e.currentTarget.src = `"img2"`)}
+                onMouseOut={e => (e.currentTarget.src = `${fileUrl}/upload/product/productImages/${product.home_image}` )}
                 alt={capitalizeStr(product.product_name)}
                 title={capitalizeStr(product.product_name)}
               />
@@ -54,4 +56,5 @@ const Product_Card = ({ product }) => {
       </>
     )
 };
+
 export default Product_Card;

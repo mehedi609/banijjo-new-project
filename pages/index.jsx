@@ -17,6 +17,9 @@ import Product_Card from '../components/shared/Product_Card';
 import Categories from '../components/home-page/mainCategories';
 import CategoriesMb from '../components/home-page/categories-mb';
 
+import VendorCarouselSlider from "../components/home-page/VendorCarouselSlider";
+import ListingFeaturedCat from "../components/home-page/ListingFeaturedCat";
+
 const { useState } = require('react');
 
 const Home = (props) => {
@@ -174,7 +177,7 @@ const Home = (props) => {
                   </div>
                 </div>
               </div>
-
+                  
               <div className="row">
                 {storesWillLoveProducts.map((product) => (
                   <div className="col-6" key={product.product_id}>
@@ -184,6 +187,12 @@ const Home = (props) => {
               </div>
             </div>
           </div>
+
+          {/*Brands Section*/}
+          <VendorCarouselSlider />
+
+          {/*Featured Category Section*/}
+          <ListingFeaturedCat />
 
           <div className="d-none d-lg-block mt-4">
             <h1 className="h5">{capitalizeStr(others.title)}</h1>

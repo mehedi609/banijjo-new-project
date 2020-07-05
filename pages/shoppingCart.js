@@ -946,7 +946,8 @@ class ShoppingCart extends React.Component {
 
 
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async ({ params }) => {
+
     let base = process.env.FRONTEND_SERVER_URL;
 
     let categories = await fetcher(`${base}/api/all_category_list`)

@@ -56,6 +56,7 @@ class Login extends React.Component {
                 <Head>
                     <title>Login</title>
                     <meta name="description" content="page detailing the products user wants to purchase" />
+                    <link rel="stylesheet" href="/css/auth.css" />
                     <link rel="stylesheet" href="/css/registration-form.css" />
                     <link rel="stylesheet" href="/css/social-login.css" />
 
