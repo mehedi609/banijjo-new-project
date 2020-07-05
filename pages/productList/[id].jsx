@@ -26,7 +26,7 @@ const ProductList = (props) => {
 
       <div className="container">
         <div className="row">
-          <div className="col-3">
+          <div className="col-lg-3 col-md-12">
             <div className="d-none d-lg-block">
               <Categories categories={categories} />
             </div>
@@ -36,7 +36,7 @@ const ProductList = (props) => {
             </div>
           </div>
 
-          <div className="col-9">
+          <div className="col-lg-9 col-md-12">
             {productList.length > 0 &&
               productList.map(({ breadcrumbs, products }) => (
                 <Fragment>
