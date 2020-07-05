@@ -14,16 +14,16 @@ const Footer = () => {
                 <h1 className="h5 mt-2">About us</h1>
                 <ul className="footer-font-size">
                   <li>
-                    <a href="/privacyPolicy">Privacy Policy</a>
+                    <a href="/privacy-policy">Privacy Policy</a>
                   </li>
                   <li>
-                    <a href="/cookiePolicy">Cookie Policy</a>
+                    <a href="/cookie-policy">Cookie Policy</a>
                   </li>
                   <li>
-                    <a href="/warrantyPolicy">Warranty Policy</a>
+                    <a href="/warranty-policy">Warranty Policy</a>
                   </li>
                   <li>
-                    <a href="/shippingPolicy">Shipping Policy</a>
+                    <a href="/shipping-policy">Shipping Policy</a>
                   </li>
                   <li>
                     <a href="/terms">Terms & Conditions</a>
@@ -35,7 +35,7 @@ const Footer = () => {
                     <a href="/faq">FAQ</a>
                   </li>
                   <li>
-                    <a href="/contactUs">Contact us</a>
+                    <a href="/contact-us">Contact us</a>
                   </li>
                 </ul>
               </div>
@@ -75,7 +75,7 @@ const Footer = () => {
 
                 <ul className="footer-font-size">
                   <li>
-                    <a href="/contactUs">Contact us</a>
+                    <a href="/contact-us">Contact us</a>
                   </li>
                 </ul>
 
@@ -164,16 +164,16 @@ const Footer = () => {
                 <h1 className="h5 mt-2">About us</h1>
                 <ul className="footer-font-size">
                   <li>
-                    <a href="/privacyPolicy">Privacy Policy</a>
+                    <a href="/privacy-policy">Privacy Policy</a>
                   </li>
                   <li>
-                    <a href="/cookiePolicy">Cookie Policy</a>
+                    <a href="/cookie-policy">Cookie Policy</a>
                   </li>
                   <li>
-                    <a href="/warrantyPolicy">Warranty Policy</a>
+                    <a href="/warranty-policy">Warranty Policy</a>
                   </li>
                   <li>
-                    <a href="/shippingPolicy">Shipping Policy</a>
+                    <a href="/shipping-policy">Shipping Policy</a>
                   </li>
                   <li>
                     <a href="/terms">Terms & Conditions</a>
@@ -185,7 +185,7 @@ const Footer = () => {
                     <a href="/faq">FAQ</a>
                   </li>
                   <li>
-                    <a href="/contactUs">Contact us</a>
+                    <a href="/contact-us">Contact us</a>
                   </li>
                 </ul>
               </div>

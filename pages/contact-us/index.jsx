@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseLayout from '../components/layout/base-layout';
+import BaseLayout from 'components/layout/base-layout';
 import Head from 'next/head';
 
 const contactUs = () => {

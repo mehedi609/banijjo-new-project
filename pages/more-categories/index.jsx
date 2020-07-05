@@ -1,6 +1,6 @@
 import React from 'react';
-import { fetcher } from '../utils/fetcher';
-import BaseLayout from '../components/layout/base-layout';
+import { fetcher } from 'utils/fetcher';
+import BaseLayout from 'components/layout/base-layout';
 
 const MoreCategory = ({ categories }) => {
   return (

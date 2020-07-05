@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseLayout from '../components/layout/base-layout';
+import BaseLayout from 'components/layout/base-layout';
 import Head from 'next/head';
 
 const privacyPolicy = () => {
@@ -9,13 +9,13 @@ const privacyPolicy = () => {
         <title>Privacy Policy</title>
       </Head>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="h3 font-weight-bold text-left mt-3">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <h1 className="h3 font-weight-bold text-left mt-3">
               Privacy and Confidentiality
             </h1>
-            <p class="text-justify mt-3">
+            <p className="text-justify mt-3">
               Welcome to the banijjo.com.bd website (the "Site") operated by
               banijjo Bangladesh Ltd. We respect your privacy and want to
               protect your personal information. To learn more, please read this
@@ -42,8 +42,8 @@ const privacyPolicy = () => {
               anonymous and at no time can we identify you unless you have an
               account on the Site and log on with your user name and password.
             </p>
-            <h1 class="h5 text-left">1. Data that we collect</h1>
-            <p class="text-justify">
+            <h1 className="h5 text-left">1. Data that we collect</h1>
+            <p className="text-justify">
               We may collect various pieces of information if you seek to place
               an order for a product with us on the Site.<br></br>We collect,
               store and process your data for processing your purchase on the
@@ -54,10 +54,10 @@ const privacyPolicy = () => {
               telephone number, mobile number, fax number, payment details,
               payment card details or bank account details.
             </p>
-            <h1 class="h5 text-left">
+            <h1 className="h5 text-left">
               Other uses of your Personal Information
             </h1>
-            <p class="text-justify">
+            <p className="text-justify">
               We may use your personal information for opinion and market
               research. Your details are anonymous and will only be used for
               statistical purposes. You can choose to opt out of this at any
@@ -67,8 +67,8 @@ const privacyPolicy = () => {
               part in competitions. We save the answers to our surveys
               separately from your email address.
             </p>
-            <h1 class="h5 text-left">Competitions</h1>
-            <p class="text-justify">
+            <h1 className="h5 text-left">Competitions</h1>
+            <p className="text-justify">
               For any competition we use the data to notify winners and
               advertise our offers. You can find more details where applicable
               in our participation terms for the respective competition.
