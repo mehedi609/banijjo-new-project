@@ -13,18 +13,12 @@ import { fetcher } from 'utils/fetcher';
 const fileUrl = 'https://admin.banijjo.com.bd/';
 
 const ProductList = (props) => {
+  const { categories, productList } = props;
 
-  const {    
-    categories,
-    productList
-  } = props;
-    
   console.log(productList);
-
 
   return (
     <BaseLayout>
-
       <Head>
         <title>Product List</title>
         <meta name="description" content="page containing list of products" />
@@ -32,9 +26,7 @@ const ProductList = (props) => {
 
       <div className="container">
         <div className="row">
-
           <div className="col-3">
-
             <div className="d-none d-lg-block">
               <Categories categories={categories} />
             </div>
@@ -42,41 +34,33 @@ const ProductList = (props) => {
             <div className="d-block d-lg-none mb-4">
               <CategoriesMb categories={categories} />
             </div>
-
           </div>
 
           <div className="col-9">
-            { productList.length > 0 && productList.map(({ breadcrumbs, products }) => (
-              <Fragment>
-
-                <div className="row">
-                  <div className="col-12">                    
-                      <ProductListBreadCrumb breadcrumbs={breadcrumbs} />                    
-                  </div>
-                </div>
-
-                <div className="row">
-                  { products.map(product => (
-                    <div className="col-md-4">                    
-                      <Product_Card product={product} />
+            {productList.length > 0 &&
+              productList.map(({ breadcrumbs, products }) => (
+                <Fragment>
+                  <div className="row">
+                    <div className="col-12">
+                      <ProductListBreadCrumb breadcrumbs={breadcrumbs} />
                     </div>
-                  ))}
-                </div>
+                  </div>
 
-              </Fragment>
-            ))}             
+                  <div className="row">
+                    {products.map((product) => (
+                      <div className="col-md-4">
+                        <Product_Card product={product} />
+                      </div>
+                    ))}
+                  </div>
+                </Fragment>
+              ))}
           </div>
-              
-              
         </div>
       </div>
-        
-
     </BaseLayout>
   );
-  
 };
-
 
 export const getServerSideProps = async ({ params }) => {
   const base = process.env.FRONTEND_SERVER_URL;
@@ -89,7 +73,7 @@ export const getServerSideProps = async ({ params }) => {
   return {
     props: {
       categories,
-      productList
+      productList,
     },
   };
 };

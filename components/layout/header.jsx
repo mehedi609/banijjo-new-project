@@ -113,22 +113,22 @@ const Header = () => {
               <div className="row my-2">
                 <div className="col-10">
                   {/* <form> */}
-                    <div className="search-box-area">
-                      <form action="#">
-                        <div className="search-box">
-                          <input
-                            className="custom-input"
-                            type="text"
-                            name="search"
-                            id="search"
-                            placeholder="Search..."
-                          />
-                          <button type="submit">
-                            <i className="fas fa-search" />
-                          </button>
-                        </div>
-                      </form>
-                    </div>
+                  <div className="search-box-area">
+                    <form action="#">
+                      <div className="search-box">
+                        <input
+                          className="custom-input"
+                          type="text"
+                          name="search"
+                          id="search"
+                          placeholder="Search..."
+                        />
+                        <button type="submit">
+                          <i className="fas fa-search" />
+                        </button>
+                      </div>
+                    </form>
+                  </div>
                   {/* </form> */}
                 </div>
                 <div className="col-2">
@@ -303,22 +303,22 @@ const Header = () => {
           <div className="row mb-3 mt-2">
             <div className="col-12">
               {/* <form> */}
-                <div className="search-box-area">
-                  <form action="#">
-                    <div className="search-box">
-                      <input
-                        className="custom-input"
-                        type="text"
-                        name="search"
-                        id="search"
-                        placeholder="Search product..."
-                      />
-                      <button type="submit">
-                        <i className="fas fa-search" />
-                      </button>
-                    </div>
-                  </form>
-                </div>
+              <div className="search-box-area">
+                <form action="#">
+                  <div className="search-box">
+                    <input
+                      className="custom-input"
+                      type="text"
+                      name="search"
+                      id="search"
+                      placeholder="Search product..."
+                    />
+                    <button type="submit">
+                      <i className="fas fa-search" />
+                    </button>
+                  </div>
+                </form>
+              </div>
               {/* </form> */}
             </div>
           </div>

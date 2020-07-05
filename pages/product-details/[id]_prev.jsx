@@ -9,20 +9,19 @@ import { fetcher } from 'utils/fetcher';
 const fileUrl = 'https://admin.banijjo.com.bd/';
 
 const ProductDetail = (props) => {
-
   const {
-      product_name,
-      productPrice,
-      home_image,
-      category_id,
-      vendor_id,
-      metaTags,
-      colors,
-      sizes,
-      carouselImages,
-      description,
-      qc_status,
-      product_sku
+    product_name,
+    productPrice,
+    home_image,
+    category_id,
+    vendor_id,
+    metaTags,
+    colors,
+    sizes,
+    carouselImages,
+    description,
+    qc_status,
+    product_sku,
   } = props;
 
   console.log(props);
@@ -47,17 +46,18 @@ const ProductDetail = (props) => {
                   <div className="color-quality mt-3">
                     <h6>Color:</h6>
                     <div className="row">
-                      { colors.length > 0 && colors.map(color => (
-                        <div className="col-1 mb-1" key={color.colorId}>
-                          <img
-                            src={`${fileUrl}/upload/product/productImages/${color.imageName}`}
-                            className="img-fluid"
-                            id={color.colorId}
-                            name={color.colorName}
-                            alt={color.colorName}
-                            width="50"
-                          />
-                        </div>
+                      {colors.length > 0 &&
+                        colors.map((color) => (
+                          <div className="col-1 mb-1" key={color.colorId}>
+                            <img
+                              src={`${fileUrl}/upload/product/productImages/${color.imageName}`}
+                              className="img-fluid"
+                              id={color.colorId}
+                              name={color.colorName}
+                              alt={color.colorName}
+                              width="50"
+                            />
+                          </div>
                         ))}
                     </div>
                   </div>
@@ -197,9 +197,9 @@ export const getServerSideProps = async ({ params }) => {
     carouselImages,
     description,
     qc_status,
-    product_sku
+    product_sku,
   } = res;
-  
+
   return {
     props: {
       product_name,
@@ -213,7 +213,7 @@ export const getServerSideProps = async ({ params }) => {
       carouselImages,
       description,
       qc_status,
-      product_sku
+      product_sku,
     },
   };
 };

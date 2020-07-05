@@ -6,7 +6,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { capitalizeStr } from 'utils/utils';
 import { fetcher } from 'utils/fetcher';
 
-
 import BaseLayout from 'components/layout/base-layout';
 import HotDeal from 'components/home-page/hot-deal';
 import MainSlider from 'components/home-page/main-slider';
@@ -32,8 +31,7 @@ const Home = (props) => {
     others,
     categories,
   } = props;
-  
-  
+
   const [otherProducts, setOtherProducts] = useState(others.products);
   const [otherProductsDesk, setOtherProductsDesk] = useState([
     ...others.products.slice(0, 5),
