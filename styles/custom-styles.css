@@ -30,6 +30,29 @@ ol {
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
 }
 
+.btn {
+  border-radius: 0;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active {
+  color: #fff;
+  background-color: #009345;
+  border-color: #009345;
+}
+
+/*.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  color: #fff;
+  background-color: #00813e;
+  border-color: #00813e;
+}*/
+
 .nav-link {
   font-size: 12px;
   padding: 5px 4px;
