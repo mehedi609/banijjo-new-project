@@ -700,26 +700,31 @@ class ProductDetails extends React.Component {
           {/* END OF  OVERVIEW, CUSTOMER REVIEWS, SPECIFICATIONS */}
 
           {/*Same Category - Other Vendor Products*/}
-          <div className="row">
-            <div className="col-12">
-              <SameVendorOrSameCatProducts
-                vorc={'c'}
-                id={category_id}
-                products={product_list_same_category_other_ven}
-              />
+          { product_list_same_category_other_ven.length > 0 && (
+            <div className="row">
+              <div className="col-12">
+                <SameVendorOrSameCatProducts
+                  vorc={'c'}
+                  id={category_id}
+                  products={product_list_same_category_other_ven}
+                />
+              </div>
             </div>
-          </div>
+          )}
 
           {/*Same Vendor - Other Category Products*/}
-          <div className="row">
-            <div className="col-12">
-              <SameVendorOrSameCatProducts
-                vorc={'v'}
-                id={vendor_id}
-                products={product_list_same_vendor_other_cat}
-              />
+          { product_list_same_vendor_other_cat.length > 0 && (
+            <div className="row">
+              <div className="col-12">
+                <SameVendorOrSameCatProducts
+                  vorc={'v'}
+                  id={vendor_id}
+                  products={product_list_same_vendor_other_cat}
+                />
+              </div>
             </div>
-          </div>
+          )}
+          
         </div>
         {/* END OF CONTAINER  */}
       </BaseLayout>
