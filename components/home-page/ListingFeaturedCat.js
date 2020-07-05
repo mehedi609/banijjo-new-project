@@ -5,9 +5,11 @@ import {
   capitalizeStr,
   shorten_the_name
 } from "../../utils/utils";
+
 // import "./ListingFeaturedCat.css";
 
-const fileUrl = process.env.REACT_APP_FILE_URL;
+// const fileUrl = process.env.REACT_APP_FILE_URL;
+const fileUrl = 'https://admin.banijjo.com.bd/';
 const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
 
 const img_src = `${fileUrl}/upload/product/productImages/`;
@@ -21,6 +23,7 @@ const style_see_more = {
 };
 
 const ListingFeaturedCat = () => {
+
   const [featuredCategories, setFeaturedCategories] = useState([]);
 
   useEffect(() => {
@@ -514,5 +517,8 @@ const showingTrees2 = tree => (
     ))}
   </div>
 );
+
+
+
 
 export default ListingFeaturedCat;

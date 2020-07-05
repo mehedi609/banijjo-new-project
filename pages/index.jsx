@@ -17,7 +17,7 @@ import Product_Card from '../components/shared/Product_Card';
 import Categories from '../components/home-page/mainCategories';
 import CategoriesMb from '../components/home-page/categories-mb';
 
-import VendorCarouselSlider from "../components/home-page/VendorCarouselSlider";
+import VendorCarouselSlider from "../components/home-page/vendor-carousel-slider";
 import ListingFeaturedCat from "../components/home-page/ListingFeaturedCat";
 
 const { useState } = require('react');
@@ -188,10 +188,10 @@ const Home = (props) => {
             </div>
           </div>
 
-          {/*Brands Section*/}
+          
           <VendorCarouselSlider />
-
-          {/*Featured Category Section*/}
+          
+          
           <ListingFeaturedCat />
 
           <div className="d-none d-lg-block mt-4">

@@ -50,6 +50,8 @@ const HotDeal = ({ products }) => {
         sliderClass=""
         slidesToSlide={2}
         swipeable
+
+        removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
       >
         {products.map((product) => (
           <div className="mr-1" key={product.product_id}>
