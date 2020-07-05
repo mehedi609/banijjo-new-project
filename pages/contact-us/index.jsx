@@ -7,6 +7,7 @@ const contactUs = () => {
     <BaseLayout>
       <Head>
         <title>Contact Us</title>
+        <link rel="stylesheet" href="/css/contactUs.css" />
       </Head>
 
       <div className="container-fluid">
@@ -19,7 +20,7 @@ const contactUs = () => {
             style={{ border: '3px solid #ccc' }}
             allowFullScreen=""
             title="googleMap"
-          ></iframe>
+          />
         </div>
       </div>
 
