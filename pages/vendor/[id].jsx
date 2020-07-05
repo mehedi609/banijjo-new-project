@@ -3,38 +3,37 @@ import Head from 'next/head';
 import BaseLayout from '../../components/layout/base-layout';
 import Product_Card from '../../components/shared/Product_Card';
 import { fetcher } from 'utils/fetcher';
-import { capitalizeStr } from "utils/utils";
+import { capitalizeStr } from 'utils/utils';
 
 // const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
 const fileUrl = 'https://admin.banijjo.com.bd/';
-const { sampleSize } = require("lodash");
+const { sampleSize } = require('lodash');
 
 class Vendor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...props
-    }
+      ...props,
+    };
   }
 
-
   dataForAllCat(dataSet) {
-    return dataSet.map(item => ({
+    return dataSet.map((item) => ({
       ...item,
       products: sampleSize(item.products, 8),
-      seeMore: false
+      seeMore: false,
     }));
   }
 
   dataForSingleCat(dataSet, catId) {
-    const items = dataSet.filter(item => item.categoryId === catId);
-    return items.map(item => ({
+    const items = dataSet.filter((item) => item.categoryId === catId);
+    return items.map((item) => ({
       ...item,
-      seeMore: true
+      seeMore: true,
     }));
   }
 
-  onChangeCatHandler = e => {
+  onChangeCatHandler = (e) => {
     const selectedCatVal = e.target.value * 1;
     if (selectedCatVal !== 0) {
       const items = this.dataForSingleCat(this.state.dataSet, selectedCatVal);
@@ -47,10 +46,10 @@ class Vendor extends React.Component {
     console.log(e.target.value);*/
   };
 
-  onClickHandler = data => e => {
+  onClickHandler = (data) => (e) => {
     const fullItems = this.dataForSingleCat(this.state.dataSet, data);
-    this.setState(prevState => {
-      const items = prevState.items.map(item =>
+    this.setState((prevState) => {
+      const items = prevState.items.map((item) =>
         item.categoryId === data ? fullItems[0] : item
       );
       return { items };
@@ -58,22 +57,27 @@ class Vendor extends React.Component {
   };
 
   render() {
-
     const { vendorInfo, categoriesArr, selectedCatVal, items } = this.state;
-
 
     return (
       <BaseLayout>
-
         <Head>
           <title>Vendor Details</title>
-          <meta name="description" content="page containing products of specific vendor" />
+          <meta
+            name="description"
+            content="page containing products of specific vendor"
+          />
         </Head>
 
         <div className="container">
           <div className="row">
             <div className="col-2 col-lg-1">
-              <img src={fileUrl + '/upload/vendor/' + vendorInfo.logo} className="img-fluid mb-1" alt={vendorInfo.name} title={vendorInfo.name} />
+              <img
+                src={fileUrl + '/upload/vendor/' + vendorInfo.logo}
+                className="img-fluid mb-1"
+                alt={vendorInfo.name}
+                title={vendorInfo.name}
+              />
             </div>
             <div className="col-4 col-lg-8">
               <h1 className="h5 pt-3">{capitalizeStr(vendorInfo.name)}</h1>
@@ -87,56 +91,65 @@ class Vendor extends React.Component {
                 aria-labelledby="lbl-select-category"
               >
                 <option value="0">All Categories</option>
-                {categoriesArr.map(item => <option value={item.category_id} key={item.category_id}>{item.category_name}</option>)}
+                {categoriesArr.map((item) => (
+                  <option value={item.category_id} key={item.category_id}>
+                    {item.category_name}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
           <div className="row">
             <div className="col-12">
-              <img className="img-fluid" style={{ width: "100%", ojbectFit: "cover" }} src={fileUrl + '/upload/vendor/' + vendorInfo.cover_photo} alt={vendorInfo.name} title={vendorInfo.name} />
+              <img
+                className="img-fluid"
+                style={{ width: '100%', ojbectFit: 'cover' }}
+                src={fileUrl + '/upload/vendor/' + vendorInfo.cover_photo}
+                alt={vendorInfo.name}
+                title={vendorInfo.name}
+              />
             </div>
           </div>
 
-          {items.length > 0 && items.map(item => (
-            <Fragment key={item.categoryId}>
-              <div className="row">
-                <div className="col-12">
-                  <h1 className="h5 vendor-title py-1 px-2 mt-2">{capitalizeStr(item.categoryName)}</h1>
-                </div>
-              </div>
-
-              <div className="row">
-                {item.products.length > 0 && item.products.map(product => (
-                  <div className="col-md-3" key={product.product_id}>
-                    <Product_Card product={product} />
-                  </div>
-                ))}
-              </div>
-
-              {!item.seeMore && (
+          {items.length > 0 &&
+            items.map((item) => (
+              <Fragment key={item.categoryId}>
                 <div className="row">
-                  <div className="offset-md-5 col-md-2 text-center">
-                    <button
-                      type="submit"
-                      onClick={this.onClickHandler(item.categoryId)}
-                      className="btn-sm btn-success btn-color rounded-0  mt-2 mb-2"
-                      aria-label="See More Button"
-                    >
-                      See More
-                    </button>
+                  <div className="col-12">
+                    <h1 className="h5 vendor-title py-1 px-2 mt-2">
+                      {capitalizeStr(item.categoryName)}
+                    </h1>
                   </div>
                 </div>
-              )}
-            </Fragment>
-          ))}
 
+                <div className="row">
+                  {item.products.length > 0 &&
+                    item.products.map((product) => (
+                      <div className="col-md-3" key={product.product_id}>
+                        <Product_Card product={product} />
+                      </div>
+                    ))}
+                </div>
 
+                {!item.seeMore && (
+                  <div className="row">
+                    <div className="offset-md-5 col-md-2 text-center">
+                      <button
+                        type="submit"
+                        onClick={this.onClickHandler(item.categoryId)}
+                        className="btn-sm btn-success btn-color rounded-0  mt-2 mb-2"
+                        aria-label="See More Button"
+                      >
+                        See More
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </Fragment>
+            ))}
         </div>
-
       </BaseLayout>
     );
-
-
   }
 }
 
@@ -146,7 +159,7 @@ export const getServerSideProps = async ({ params }) => {
   const selectedCatVal = 0;
 
   let vendorInfo = await fetcher(`${base}/api/vendorInfoById/${id}`);
-  vendorInfo = vendorInfo.vendorInfo
+  vendorInfo = vendorInfo.vendorInfo;
 
   let categoriesArr = await fetcher(`${base}/api/categoriesByVendorId/${id}`);
   categoriesArr = categoriesArr.result;
@@ -154,10 +167,10 @@ export const getServerSideProps = async ({ params }) => {
   let dataSet = await fetcher(`${base}/api/getVendorProductsByCategory/${id}`);
   dataSet = dataSet.result;
 
-  const items = dataSet.map(item => ({
+  const items = dataSet.map((item) => ({
     ...item,
     products: sampleSize(item.products, 8),
-    seeMore: false
+    seeMore: false,
   }));
 
   return {
@@ -166,7 +179,7 @@ export const getServerSideProps = async ({ params }) => {
       categoriesArr,
       selectedCatVal,
       dataSet,
-      items
+      items,
     },
   };
 };

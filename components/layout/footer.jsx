@@ -90,7 +90,6 @@ const Footer = () => {
                 </div>
 
                 <div className="row mt-3 mb-2">
-                  
                   <div className="col-1 facebook-color mr-2">
                     <a
                       href="https://www.facebook.com/banijjo.com.bd"
@@ -150,9 +149,7 @@ const Footer = () => {
                       <i className="fab fa-pinterest-square fa-2x" />
                     </a>
                   </div>
-                
                 </div>
-
               </div>
             </div>
           </div>
