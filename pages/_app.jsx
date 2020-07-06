@@ -7,12 +7,8 @@ import 'styles/custom-styles.css';
 import 'styles/footer.css';
 import 'styles/header.css';
 import 'styles/custom-accordion-styles.css';
-
 import 'styles/mainCategoryMenu.css';
-import 'public/css/contactUs.css';
-import 'styles/vendor.css';
 import 'styles/product-list.css';
-
 import 'styles/ListingFeaturedCat.css';
 
 function MyApp({ Component, pageProps }) {

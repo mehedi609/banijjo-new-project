@@ -1,22 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Head from 'next/head';
-import BaseLayout from '../../components/layout/base-layout';
+import BaseLayout from 'components/layout/base-layout';
 
-import Product_Card from '../../components/shared/Product_Card';
-import ProductListBreadCrumb from '../../components/shared/productListBreadCrumb';
-import Categories from '../../components/home-page/mainCategories';
-import CategoriesMb from '../../components/home-page/categories-mb';
+import Product_Card from 'components/shared/Product_Card';
+import ProductListBreadCrumb from 'components/shared/productListBreadCrumb';
+import CategoriesMb from 'components/home-page/category-sidebar/categories-mb';
 
 import { fetcher } from 'utils/fetcher';
+import MainCategoriesSidebar from 'components/home-page/category-sidebar/main-categories-sidebar';
 
-// const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
-const fileUrl = 'https://admin.banijjo.com.bd/';
-
-const ProductList = (props) => {
-  const { categories, productList } = props;
-
-  console.log(productList);
-
+const ProductList = ({ categories, productList }) => {
   return (
     <BaseLayout>
       <Head>
@@ -28,7 +21,7 @@ const ProductList = (props) => {
         <div className="row">
           <div className="col-lg-3 col-md-12">
             <div className="d-none d-lg-block">
-              <Categories categories={categories} />
+              <MainCategoriesSidebar categories={categories} />
             </div>
 
             <div className="d-block d-lg-none mb-4">
@@ -39,7 +32,7 @@ const ProductList = (props) => {
           <div className="col-lg-9 col-md-12">
             {productList.length > 0 &&
               productList.map(({ breadcrumbs, products }) => (
-                <Fragment>
+                <>
                   <div className="row">
                     <div className="col-12">
                       <ProductListBreadCrumb breadcrumbs={breadcrumbs} />
@@ -53,7 +46,7 @@ const ProductList = (props) => {
                       </div>
                     ))}
                   </div>
-                </Fragment>
+                </>
               ))}
           </div>
         </div>
