@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
-
+import Carousel from 'react-multi-carousel';
 import BaseLayout from '../../components/layout/base-layout';
 import SameVendorOrSameCatProducts from './SameVendorOrSameCatProducts';
 
@@ -447,28 +447,7 @@ class ProductDetails extends React.Component {
           <meta name="description" content="page containing product details" />
           <link rel="stylesheet" href="/css/product-details.css" />
 
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"
-          />
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css"
-          />
-
-          <script
-            type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-          ></script>
-          <script
-            type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"
-          ></script>
-
-          <script
-            type="text/javascript"
-            src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"
-          ></script>
+          <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         </Head>
 
         <div className="container">
@@ -476,37 +455,7 @@ class ProductDetails extends React.Component {
             <div className="row">
               <div className="col-4">
                 Zoom Images
-                <div className="owl-carousel">
-                  {carouselImages.map(
-                    (item) =>
-                      item && (
-                        <a
-                          href="!#"
-                          key={item.serialNumber}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            this.setState({ showClickedImage: item.imageName });
-                            window.imageZoom(
-                              'myimage',
-                              'myresult',
-                              fileUrl +
-                                '/upload/product/productImages/' +
-                                item.imageName
-                            );
-                          }}
-                        >
-                          <div className="frameSlider">
-                            <span className="helperSlider">
-                              <img
-                                src={`${fileUrl}/upload/product/productImages/${item.imageName}`}
-                                alt={''}
-                              />
-                            </span>
-                          </div>
-                        </a>
-                      )
-                  )}
-                </div>
+                
               </div>
 
               <div className="col-8">

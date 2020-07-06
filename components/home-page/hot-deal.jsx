@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import ProductCard from '../shared/product-card';
+import Product_Card from '../shared/Product_Card';
 
 const HotDeal = ({ products }) => {
   return (
@@ -50,10 +51,13 @@ const HotDeal = ({ products }) => {
         sliderClass=""
         slidesToSlide={2}
         swipeable
+
+        removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
       >
         {products.map((product) => (
           <div className="mr-1" key={product.product_id}>
-            <ProductCard product={product} />
+            {/* <ProductCard product={product} /> */}
+            <Product_Card product={product} />
           </div>
         ))}
       </Carousel>

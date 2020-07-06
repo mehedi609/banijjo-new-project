@@ -13,6 +13,8 @@ import 'styles/contactUs.css';
 import 'styles/vendor.css';
 import 'styles/product-list.css';
 
+import 'styles/ListingFeaturedCat.css';
+
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
