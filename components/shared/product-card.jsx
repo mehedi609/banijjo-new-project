@@ -19,7 +19,7 @@ const ProductCard = ({ product, customTitleCSS, customTextCSS }) => {
         >
           <img
             src={`${img_src}/${product.home_image}`}
-            className="card-img-top cursor-pointer"
+            className="card-img-top"
             alt={capitalizeStr(product.product_name)}
             title={capitalizeStr(product.product_name)}
           />

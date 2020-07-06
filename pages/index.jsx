@@ -12,13 +12,12 @@ import MainSlider from 'components/home-page/main-slider';
 import SubSlider from 'components/home-page/sub-slider';
 
 import ProductCard from 'components/shared/product-card';
-import Product_Card from '../components/shared/Product_Card';
 
-import Categories from '../components/home-page/mainCategories';
 import CategoriesMb from '../components/home-page/categories-mb';
 
 import VendorCarouselSlider from '../components/home-page/vendor-carousel-slider';
-import ListingFeaturedCat from '../components/home-page/ListingFeaturedCat';
+import MainCategoriesSidebar from '../components/home-page/main-categories-sidebar';
+// import ListingFeaturedCat from '../components/home-page/ListingFeaturedCat';
 
 const { useState } = require('react');
 
@@ -33,6 +32,7 @@ const Home = (props) => {
     storesWillLove,
     others,
     categories,
+    vendors,
   } = props;
 
   const [otherProducts, setOtherProducts] = useState(others.products);
@@ -87,7 +87,8 @@ const Home = (props) => {
             <div className="col-lg-3 col-md-12">
               <div className="d-none d-lg-block">
                 {/* <h2>Categories Desktop</h2> */}
-                <Categories categories={categories} />
+                {/*<Categories categories={categories} />*/}
+                <MainCategoriesSidebar categories={categories} />
               </div>
 
               <div className="d-block d-lg-none mb-4">
@@ -120,7 +121,7 @@ const Home = (props) => {
               <div className="row">
                 {topSelectionProducts.map((product) => (
                   <div className="col-4" key={product.product_id}>
-                    <Product_Card product={product} />
+                    <ProductCard product={product} />
                   </div>
                 ))}
               </div>
@@ -139,7 +140,7 @@ const Home = (props) => {
               <div className="row">
                 {topSelectionBigProducts.map((product) => (
                   <div className="col-4" key={product.product_id}>
-                    <Product_Card product={product} />
+                    <ProductCard product={product} />
                   </div>
                 ))}
               </div>
@@ -162,7 +163,7 @@ const Home = (props) => {
               <div className="row">
                 {newForYouProducts.map((product) => (
                   <div className="col-6" key={product.product_id}>
-                    <Product_Card product={product} />
+                    <ProductCard product={product} />
                   </div>
                 ))}
               </div>
@@ -181,16 +182,19 @@ const Home = (props) => {
               <div className="row">
                 {storesWillLoveProducts.map((product) => (
                   <div className="col-6" key={product.product_id}>
-                    <Product_Card product={product} />
+                    <ProductCard product={product} />
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          <VendorCarouselSlider />
+          <div className="mt-4">
+            <h1 className="h5">{capitalizeStr(vendors.title)}</h1>
+            <VendorCarouselSlider vendors={vendors.vendors} />
+          </div>
 
-          <ListingFeaturedCat />
+          {/*<ListingFeaturedCat />*/}
 
           <div className="d-none d-lg-block mt-4">
             <h1 className="h5">{capitalizeStr(others.title)}</h1>
@@ -207,7 +211,7 @@ const Home = (props) => {
                     className="col-md-5ths mb-3 custom-fade-in"
                     key={product.product_id}
                   >
-                    <Product_Card product={product} />
+                    <ProductCard product={product} />
                   </div>
                 ))}
               </InfiniteScroll>
@@ -229,7 +233,7 @@ const Home = (props) => {
                     className="col-3ths mb-3 custom-fade-in"
                     key={product.product_id}
                   >
-                    <Product_Card product={product} />
+                    <ProductCard product={product} />
                   </div>
                 ))}
               </InfiniteScroll>
@@ -241,15 +245,17 @@ const Home = (props) => {
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const base = process.env.FRONTEND_SERVER_URL;
 
   const res = await fetcher(`${base}/api/feature_product_list`);
   const res2 = await fetcher(`${base}/api/top_main_banners`);
   const res3 = await fetcher(`${base}/api/all_category_list`);
+  const res_vendor = await fetcher(`${base}/api/vendors`);
 
   const mainSliderImages = res2.data;
   const categories = res3.data;
+  const vendors = res_vendor.data;
 
   const resultArr = res.data;
 
@@ -292,8 +298,9 @@ export async function getStaticProps() {
       storesWillLove,
       others,
       categories,
+      vendors,
     },
   };
-}
+};
 
 export default Home;
