@@ -1,21 +1,22 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
-import BaseLayout from '../../components/layout/base-layout';
-import Product_Card from '../../components/shared/Product_Card';
+import BaseLayout from 'components/layout/base-layout';
 import { fetcher } from 'utils/fetcher';
 import { capitalizeStr } from 'utils/utils';
-
-// const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
-const fileUrl = 'https://admin.banijjo.com.bd/';
+import ProductCard from 'components/shared/product-card';
 const { sampleSize } = require('lodash');
 
+const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
+
 class Vendor extends React.Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
     this.state = {
       ...props,
     };
-  }
+  }*/
+
+  state = { ...this.props };
 
   dataForAllCat(dataSet) {
     return dataSet.map((item) => ({
@@ -42,8 +43,6 @@ class Vendor extends React.Component {
       const items = this.dataForAllCat(this.state.dataSet, selectedCatVal);
       this.setState({ selectedCatVal, items });
     }
-    /*this.setState({ selectedCatVal: e.target.value * 1 });
-    console.log(e.target.value);*/
   };
 
   onClickHandler = (data) => (e) => {
@@ -70,20 +69,21 @@ class Vendor extends React.Component {
         </Head>
 
         <div className="container">
-          <div className="row">
+          <div className="row mt-2">
             <div className="col-2 col-lg-1">
               <img
                 src={fileUrl + '/upload/vendor/' + vendorInfo.logo}
-                className="img-fluid mb-1"
+                className="img-fluid"
                 alt={vendorInfo.name}
                 title={vendorInfo.name}
               />
             </div>
+
             <div className="col-4 col-lg-8">
               <h1 className="h5 pt-3">{capitalizeStr(vendorInfo.name)}</h1>
             </div>
+
             <div className="col-6 col-lg-3">
-              <label id="lbl-select-category"></label>
               <select
                 onChange={this.onChangeCatHandler}
                 className="custom-select mt-2"
@@ -99,12 +99,13 @@ class Vendor extends React.Component {
               </select>
             </div>
           </div>
-          <div className="row">
+
+          <div className="row mt-3 mb-4">
             <div className="col-12">
               <img
                 className="img-fluid"
                 style={{ width: '100%', ojbectFit: 'cover' }}
-                src={fileUrl + '/upload/vendor/' + vendorInfo.cover_photo}
+                src={`${fileUrl}/upload/vendor/${vendorInfo.cover_photo}`}
                 alt={vendorInfo.name}
                 title={vendorInfo.name}
               />
@@ -113,31 +114,35 @@ class Vendor extends React.Component {
 
           {items.length > 0 &&
             items.map((item) => (
-              <Fragment key={item.categoryId}>
-                <div className="row">
+              <div key={item.categoryId}>
+                <div className="row mt-2">
                   <div className="col-12">
-                    <h1 className="h5 vendor-title py-1 px-2 mt-2">
+                    <h1 className="h5 vendor-title py-2 pl-2">
                       {capitalizeStr(item.categoryName)}
                     </h1>
                   </div>
                 </div>
 
-                <div className="row">
+                <div className="row mt-1">
                   {item.products.length > 0 &&
                     item.products.map((product) => (
-                      <div className="col-md-3" key={product.product_id}>
-                        <Product_Card product={product} />
+                      <div
+                        className="col-md-3 mb-md-3 mb-sm-2"
+                        key={product.product_id}
+                      >
+                        <ProductCard product={product} />
                       </div>
                     ))}
                 </div>
 
                 {!item.seeMore && (
-                  <div className="row">
-                    <div className="offset-md-5 col-md-2 text-center">
+                  <div className="row mb-3">
+                    {/*<div className="offset-md-5 col-md-2 text-center">*/}
+                    <div className="col-12">
                       <button
                         type="submit"
                         onClick={this.onClickHandler(item.categoryId)}
-                        className="btn-sm btn-success btn-color rounded-0  mt-2 mb-2"
+                        className="btn btn-sm btn-primary rounded-0 d-block mx-auto"
                         aria-label="See More Button"
                       >
                         See More
@@ -145,9 +150,16 @@ class Vendor extends React.Component {
                     </div>
                   </div>
                 )}
-              </Fragment>
+              </div>
             ))}
         </div>
+
+        <style jsx>{`
+          .vendor-title {
+            color: #565356;
+            background-color: #d0d2d7;
+          }
+        `}</style>
       </BaseLayout>
     );
   }
