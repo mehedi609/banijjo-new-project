@@ -13,10 +13,10 @@ import SubSlider from 'components/home-page/sub-slider';
 
 import ProductCard from 'components/shared/product-card';
 
-import CategoriesMb from '../components/home-page/categories-mb';
+import CategoriesMb from '../components/home-page/category-sidebar/categories-mb';
 
 import VendorCarouselSlider from '../components/home-page/vendor-carousel-slider';
-import MainCategoriesSidebar from '../components/home-page/main-categories-sidebar';
+import MainCategoriesSidebar from '../components/home-page/category-sidebar/main-categories-sidebar';
 // import ListingFeaturedCat from '../components/home-page/ListingFeaturedCat';
 
 const { useState } = require('react');

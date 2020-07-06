@@ -6,7 +6,7 @@ import BaseLayout from '../../components/layout/base-layout';
 import Product_Card from '../../components/shared/Product_Card';
 import ProductListBreadCrumb from '../../components/shared/productListBreadCrumb';
 import Categories from '../../components/home-page/mainCategories';
-import CategoriesMb from '../../components/home-page/categories-mb';
+import CategoriesMb from '../../components/home-page/category-sidebar/categories-mb';
 
 import { fetcher } from 'utils/fetcher';
 import axios from 'axios';
