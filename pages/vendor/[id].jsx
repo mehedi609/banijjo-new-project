@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import BaseLayout from 'components/layout/base-layout';
 import { fetcher } from 'utils/fetcher';
