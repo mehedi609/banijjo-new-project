@@ -14,7 +14,7 @@ const SubcategoryList = ({ category, lastChilds }) => {
                 zIndex: 1000,
               }}
             >
-              {lastChilds.map(item => (
+              {lastChilds.map((item) => (
                 <li className="spvmm_submm_li" key={item.id}>
                   <a className="megamenu_a" href={'/productList/' + item.id}>
                     {item.category_name}
