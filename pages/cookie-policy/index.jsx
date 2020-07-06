@@ -23,9 +23,8 @@ const cookiePolicy = (props) => {
 
             <p className="text-justify mt-3">
               {policy.length > 0 &&
-                policy.map(({ terms_and_conditions }) => terms_and_conditions)}              
+                policy.map(({ terms_and_conditions }) => terms_and_conditions)}
             </p>
-           
           </div>
         </div>
       </div>

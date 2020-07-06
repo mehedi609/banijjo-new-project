@@ -11,7 +11,10 @@ const FAQ = (props) => {
     <BaseLayout>
       <Head>
         <title>Frequently Asked Questions</title>
-        <meta name="Frequently Asked Questions" content="page containing Frequently Asked Questions" />
+        <meta
+          name="Frequently Asked Questions"
+          content="page containing Frequently Asked Questions"
+        />
       </Head>
 
       <div className="container">
@@ -23,9 +26,8 @@ const FAQ = (props) => {
 
             <p className="text-justify mt-3">
               {policy.length > 0 &&
-                policy.map(({ terms_and_conditions }) => terms_and_conditions)}              
+                policy.map(({ terms_and_conditions }) => terms_and_conditions)}
             </p>
-           
           </div>
         </div>
       </div>

@@ -11,21 +11,23 @@ const returnsAndReplacement = (props) => {
     <BaseLayout>
       <Head>
         <title>Returns and Replacement</title>
-        <meta name="Returns and Replacement" content="page containing Returns and Replacement" />
+        <meta
+          name="Returns and Replacement"
+          content="page containing Returns and Replacement"
+        />
       </Head>
 
       <div className="container">
         <div className="row">
           <div className="col-md-12">
             <h1 className="h3 font-weight-bold text-left mt-3">
-            Returns and Replacement
+              Returns and Replacement
             </h1>
 
             <p className="text-justify mt-3">
               {policy.length > 0 &&
-                policy.map(({ terms_and_conditions }) => terms_and_conditions)}              
+                policy.map(({ terms_and_conditions }) => terms_and_conditions)}
             </p>
-           
           </div>
         </div>
       </div>
@@ -36,7 +38,9 @@ const returnsAndReplacement = (props) => {
 export async function getStaticProps() {
   const base = process.env.FRONTEND_SERVER_URL;
 
-  const policy = await fetcher(`${base}/api/getPolicy/Returns%20and%20Replacement`);
+  const policy = await fetcher(
+    `${base}/api/getPolicy/Returns%20and%20Replacement`
+  );
 
   return {
     props: {
@@ -45,5 +49,4 @@ export async function getStaticProps() {
   };
 }
 
-export default returnsAndReplacement
-;
+export default returnsAndReplacement;

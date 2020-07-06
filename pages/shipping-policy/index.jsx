@@ -11,7 +11,10 @@ const shippingPolicy = (props) => {
     <BaseLayout>
       <Head>
         <title>Shipping Policy</title>
-        <meta name="Shipping Policy" content="page containing shipping policy" />
+        <meta
+          name="Shipping Policy"
+          content="page containing shipping policy"
+        />
       </Head>
 
       <div className="container">
@@ -23,9 +26,8 @@ const shippingPolicy = (props) => {
 
             <p className="text-justify mt-3">
               {policy.length > 0 &&
-                policy.map(({ terms_and_conditions }) => terms_and_conditions)}              
+                policy.map(({ terms_and_conditions }) => terms_and_conditions)}
             </p>
-           
           </div>
         </div>
       </div>

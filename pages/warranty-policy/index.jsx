@@ -11,7 +11,10 @@ const warrantyPolicy = (props) => {
     <BaseLayout>
       <Head>
         <title>Warranty Policy</title>
-        <meta name="Warranty Policy" content="page containing warranty policy" />
+        <meta
+          name="Warranty Policy"
+          content="page containing warranty policy"
+        />
       </Head>
 
       <div className="container">
@@ -23,9 +26,8 @@ const warrantyPolicy = (props) => {
 
             <p className="text-justify mt-3">
               {policy.length > 0 &&
-                policy.map(({ terms_and_conditions }) => terms_and_conditions)}              
+                policy.map(({ terms_and_conditions }) => terms_and_conditions)}
             </p>
-           
           </div>
         </div>
       </div>
