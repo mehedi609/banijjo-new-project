@@ -45,13 +45,10 @@ ol {
   border-color: #009345;
 }
 
-/*.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active {
-  color: #fff;
-  background-color: #00813e;
-  border-color: #00813e;
-}*/
+a.text-primary:focus,
+a.text-primary:hover {
+  color: #009345 !important;
+}
 
 .nav-link {
   font-size: 12px;

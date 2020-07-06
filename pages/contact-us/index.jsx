@@ -82,37 +82,39 @@ const contactUs = () => {
             </form>
           </div>
 
-          <div className="col-md-5 offset-md-1">
-            <div className="contact-info">
-              <div className="row">
-                <div className="col-md-12 mb-3">
-                  <div className="contact-info-left float-left pr-3">
-                    <i className="fas fa-map-marker" />
-                  </div>
-                  <div className="contact-info-right d-table-cell">
-                    <span>164/A Shahjahan Rd, Dhaka 1207</span>
-                  </div>
-                </div>
-                <div className="col-md-12 mb-3">
-                  <div className="contact-info-left float-left pr-3">
-                    <i className="fas fa-envelope-open" />
-                  </div>
-                  <div className="contact-info-right d-table-cell">
-                    <span>info@banijjo.com.bd</span>
-                  </div>
-                </div>
-                <div className="col-md-12 mb-3">
-                  <div className="contact-info-left float-left pr-3">
-                    <i className="fas fa-phone-volume" />
-                  </div>
-                  <div className="contact-info-right d-table-cell">
-                    <span>09677-222 222</span>
-                  </div>
-                </div>
+          <div className="col-md-5 offset-md-1 mt-md-5">
+            <div className="row">
+              <div className="col-1">
+                <i className="fas fa-map-marker-alt fa-2x text-primary" />
+              </div>
+              <div className="col-11">
+                <p className="d-inline-block mt-1">
+                  164/A Shahjahan Rd, Dhaka 1207
+                </p>
               </div>
             </div>
 
-            <div className="row mt-3">
+            <div className="row">
+              <div className="col-1">
+                <i className="fas fa-envelope fa-2x text-primary" />
+              </div>
+              <div className="col-11">
+                <p className="d-inline-block mt-1">info@banijjo.com.bd</p>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-1">
+                <i className="fas fa-phone-volume fa-2x text-primary" />
+              </div>
+              <div className="col-11">
+                <p className="d-inline-block mt-1">
+                  <b>09677-222 222</b>
+                </p>
+              </div>
+            </div>
+
+            <div className="row mt-2">
               <div className="col-1 facebook-color mr-2">
                 <a
                   href="https://www.facebook.com/banijjo.com.bd"

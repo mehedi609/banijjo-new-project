@@ -5,7 +5,7 @@ const AppLink = ({ children, href, as = null }) => {
   return (
     <>
       <Link href={href} as={`${as ? as : href}`}>
-        <a>{children}</a>
+        {children}
       </Link>
 
       <style jsx>{`
