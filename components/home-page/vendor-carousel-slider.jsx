@@ -3,8 +3,9 @@ import axios from "axios";
 import Carousel from 'react-multi-carousel';
 // import ProductCard from '../shared/product-card';
 
-const fileUrl = process.env.REACT_APP_FILE_URL;
-const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
+// const fileUrl = process.env.REACT_APP_FILE_URL;
+const fileUrl = 'https://admin.banijjo.com.bd/';
+const base = process.env.FRONTEND_SERVER_URL;
 
 const style = { marginTop: "5px", marginBottom: "5px" };
 
