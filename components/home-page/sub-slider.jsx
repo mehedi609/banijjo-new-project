@@ -1,6 +1,7 @@
 import React from 'react';
-import ProductCard from '../shared/product-card';
 import Carousel from 'react-multi-carousel';
+import ProductCard from '../shared/product-card';
+import Product_Card from '../shared/Product_Card';
 
 const CustomLeftArrow = () => <i></i>;
 
@@ -56,7 +57,8 @@ const SubSlider = ({ products }) => {
       >
         {products.map((product) => (
           <div className="mr-1 mt-2" key={product.product_id}>
-            <ProductCard product={product} customTextCSS customTitleCSS />
+            {/* <ProductCard product={product} customTextCSS customTitleCSS /> */}
+            <Product_Card product={product} />
           </div>
         ))}
       </Carousel>

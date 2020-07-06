@@ -1,12 +1,18 @@
 import React from 'react';
 import BaseLayout from 'components/layout/base-layout';
 import Head from 'next/head';
+import { fetcher } from '../../utils/fetcher';
 
-const privacyPolicy = () => {
+const privacyPolicy = (props) => {
+
+  const { policy } = props;
+  // console.log(policy);
+  
   return (
     <BaseLayout>
       <Head>
         <title>Privacy Policy</title>
+        <meta name="Privacy Policy" content="page containing privacy policy"/>
       </Head>
 
       <div className="container">
@@ -16,6 +22,12 @@ const privacyPolicy = () => {
               Privacy and Confidentiality
             </h1>
             <p className="text-justify mt-3">
+              
+              {policy.length > 0 && 
+                policy.map(({ terms_and_conditions }) => (
+                  terms_and_conditions
+                ))}
+
               Welcome to the banijjo.com.bd website (the "Site") operated by
               banijjo Bangladesh Ltd. We respect your privacy and want to
               protect your personal information. To learn more, please read this
@@ -78,6 +90,19 @@ const privacyPolicy = () => {
       </div>
     </BaseLayout>
   );
+};
+
+
+export async function getStaticProps() {
+  const base = process.env.FRONTEND_SERVER_URL;  
+
+  const policy  = await fetcher(`${base}/api/getPolicy/Privacy%20Policy`)  
+
+  return {
+      props: {
+        policy
+      },
+  };
 };
 
 export default privacyPolicy;
