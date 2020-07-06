@@ -139,7 +139,7 @@ class Login extends React.Component {
               as={`/auth/registration`}
               className="text-success"
             >
-              Register Now!
+              <a>Register Now!</a>
             </AppLink>
           </div>
         </div>

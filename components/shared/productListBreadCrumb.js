@@ -11,7 +11,7 @@ const ProductListBreadCrumb = ({ breadcrumbs }) => {
           breadcrumbs.map(({ id, category_name }) => (
             <li className="d-inline-block" key={id}>
               <AppLink href={`/productList/[id]`} as={`/productList/${id}`}>
-                {category_name}
+                <a>{category_name}</a>
               </AppLink>
             </li>
           ))}

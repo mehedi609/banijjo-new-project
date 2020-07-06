@@ -9,7 +9,7 @@ import 'styles/header.css';
 import 'styles/custom-accordion-styles.css';
 
 import 'styles/mainCategoryMenu.css';
-import 'styles/contactUs.css';
+import 'public/css/contactUs.css';
 import 'styles/vendor.css';
 import 'styles/product-list.css';
 

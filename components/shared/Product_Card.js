@@ -11,7 +11,7 @@ const fileUrl = 'https://admin.banijjo.com.bd/';
 const Product_Card = ({ product }) => {
   return (
     <>
-      <div className="card card-border-radious mb-3">
+      <div className="card">
         <AppLink
           href={`/product-details/[id]`}
           as={`/product-details/${product.product_id}`}
@@ -24,11 +24,11 @@ const Product_Card = ({ product }) => {
           />
         </AppLink>
 
-        {product.newProduct === 1 && (
+        {product.newProduct !== 1 && (
           <span className="product-new-label">New</span>
         )}
 
-        {product.discountAmount !== 0 && (
+        {product.discountAmount === 0 && (
           <span className="product-new-label-discount">
             {calDiscountPercentage(
               product.discountAmount,
@@ -38,16 +38,18 @@ const Product_Card = ({ product }) => {
           </span>
         )}
 
-        <div className="card-body custom-card-padding">
+        <div className="card-body">
           <div className="text-center">
-            <h5 className="card-title">
+            <h1 className="card-title h6">
               <AppLink
                 href={`/product-details/[id]`}
                 as={`/product-details/${product.product_id}`}
               >
-                {capitalizeStr(shorten_the_name(product.product_name))}
+                <a className="text-primary">
+                  {capitalizeStr(shorten_the_name(product.product_name))}
+                </a>
               </AppLink>
-            </h5>
+            </h1>
 
             <p className="card-text">
               ৳&nbsp;{product.productPrice - product.discountAmount}
