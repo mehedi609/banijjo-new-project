@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
-import axios from "axios";
+import React, { Fragment, useEffect, useState } from 'react';
+import axios from 'axios';
 import {
   calDiscountPercentage,
   capitalizeStr,
-  shorten_the_name
-} from "../../utils/utils";
+  shorten_the_name,
+} from '../../utils/utils';
 
 // import "./ListingFeaturedCat.css";
 
@@ -14,22 +14,21 @@ const base = process.env.FRONTEND_SERVER_URL;
 
 const img_src = `${fileUrl}/upload/product/productImages/`;
 
-const style = { marginTop: "5px", marginBottom: "5px" };
+const style = { marginTop: '5px', marginBottom: '5px' };
 const style_see_more = {
-  float: "right",
-  color: "#009345",
-  fontSize: "11px",
-  fontWeight: "normal"
+  float: 'right',
+  color: '#009345',
+  fontSize: '11px',
+  fontWeight: 'normal',
 };
 
 const ListingFeaturedCat = () => {
-
   const [featuredCategories, setFeaturedCategories] = useState([]);
 
   useEffect(() => {
     axios
       .get(`${base}/api/feature_category`)
-      .then(res => setFeaturedCategories(res.data));
+      .then((res) => setFeaturedCategories(res.data));
   }, []);
 
   return (
@@ -44,7 +43,7 @@ const ListingFeaturedCat = () => {
                   {index === 0 && (
                     <h1
                       className="categoryHeading"
-                      style={{ ...style, paddingLeft: "15px" }}
+                      style={{ ...style, paddingLeft: '15px' }}
                     >
                       Featured Categories
                     </h1>
@@ -72,7 +71,7 @@ const ListingFeaturedCat = () => {
                                 <span className="featuredcatoneimage_new_label_discount_topSelection">
                                   {calDiscountPercentage(
                                     item.parent.discountAmount,
-                                    item.parent.productPrice
+                                    item.parent.productPrice,
                                   )}
                                   %
                                 </span>
@@ -94,7 +93,7 @@ const ListingFeaturedCat = () => {
                               className="aclass"
                             >
                               {capitalizeStr(
-                                shorten_the_name(item.parent.product_name)
+                                shorten_the_name(item.parent.product_name),
                               )}
                             </a>
                           </h3>
@@ -110,18 +109,18 @@ const ListingFeaturedCat = () => {
                         </div>
                       </div>
 
-                      <p>{""}</p>
+                      <p>{''}</p>
 
                       <div className="col-md-4">
                         <div className="row featureCatBigImgMob">
                           {item.subCat.length > 0 &&
-                            item.subCat.map(product => (
+                            item.subCat.map((product) => (
                               <Fragment>
                                 <div
                                   className="col-md-12 featureCatsmOne"
                                   style={{
-                                    float: "left",
-                                    marginBottom: "35px"
+                                    float: 'left',
+                                    marginBottom: '35px',
                                   }}
                                 >
                                   <div className="frameFeatureCatSmTwo">
@@ -138,7 +137,7 @@ const ListingFeaturedCat = () => {
                                           <span className="featuredcattwoimage_new_label_discount_topSelection">
                                             {calDiscountPercentage(
                                               product.discountAmount,
-                                              product.productPrice
+                                              product.productPrice,
                                             )}
                                             %
                                           </span>
@@ -147,7 +146,7 @@ const ListingFeaturedCat = () => {
                                           src={`${img_src}${product.home_image}`}
                                           alt={product.product_name}
                                           title={capitalizeStr(
-                                            product.product_name
+                                            product.product_name,
                                           )}
                                         />
                                       </span>
@@ -156,7 +155,7 @@ const ListingFeaturedCat = () => {
 
                                   <div
                                     className="product-content-topSelection "
-                                    style={{ paddingRight: "9px" }}
+                                    style={{ paddingRight: '9px' }}
                                   >
                                     <h3 className="featuredcattwoimage_title_topSelection">
                                       <a
@@ -164,7 +163,9 @@ const ListingFeaturedCat = () => {
                                         className="aclass"
                                       >
                                         {capitalizeStr(
-                                          shorten_the_name(product.product_name)
+                                          shorten_the_name(
+                                            product.product_name,
+                                          ),
                                         )}
                                       </a>
                                     </h3>
@@ -185,7 +186,7 @@ const ListingFeaturedCat = () => {
                         </div>
                       </div>
 
-                      <div className="medium-4 columns">{""}</div>
+                      <div className="medium-4 columns">{''}</div>
                     </div>
                   </div>
 
@@ -198,7 +199,7 @@ const ListingFeaturedCat = () => {
                   {item.tree2.length > 0 && (
                     <div
                       className="medium-8 columns"
-                      style={{ marginTop: "20px" }}
+                      style={{ marginTop: '20px' }}
                     >
                       {showingTrees(item.tree2)}
                     </div>
@@ -210,7 +211,7 @@ const ListingFeaturedCat = () => {
                   {index === 0 && (
                     <h1
                       className="categoryHeading"
-                      style={{ ...style, paddingLeft: "15px" }}
+                      style={{ ...style, paddingLeft: '15px' }}
                     >
                       Featured Categories
                     </h1>
@@ -237,7 +238,7 @@ const ListingFeaturedCat = () => {
                               <span className="featuredcatoneimage_new_label_discount_topSelmob">
                                 {calDiscountPercentage(
                                   item.parent.discountAmount,
-                                  item.parent.productPrice
+                                  item.parent.productPrice,
                                 )}
                                 %
                               </span>
@@ -258,7 +259,7 @@ const ListingFeaturedCat = () => {
                               className="aclass"
                             >
                               {capitalizeStr(
-                                shorten_the_name(item.parent.product_name)
+                                shorten_the_name(item.parent.product_name),
                               )}
                             </a>
                           </h3>
@@ -274,12 +275,12 @@ const ListingFeaturedCat = () => {
                         </div>
                       </div>
 
-                      <p>{""}</p>
+                      <p>{''}</p>
 
                       <div className="col-md-6 featureCatTwoImageMobile">
                         <div className="row small-up-2 featureCatBigImgMob">
                           {item.subCat.length > 0 &&
-                            item.subCat.map(product => (
+                            item.subCat.map((product) => (
                               <Fragment>
                                 <div className="column">
                                   <div className="frameTopSelection">
@@ -293,7 +294,7 @@ const ListingFeaturedCat = () => {
                                         <span className="featuredcattwoimage_new_label_discount_topSelmob">
                                           {calDiscountPercentage(
                                             product.discountAmount,
-                                            product.productPrice
+                                            product.productPrice,
                                           )}
                                           %
                                         </span>
@@ -302,7 +303,7 @@ const ListingFeaturedCat = () => {
                                         src={`${img_src}${product.home_image}`}
                                         alt={product.product_name}
                                         title={capitalizeStr(
-                                          product.product_name
+                                          product.product_name,
                                         )}
                                       />
                                     </span>
@@ -315,7 +316,9 @@ const ListingFeaturedCat = () => {
                                         className="aclass"
                                       >
                                         {capitalizeStr(
-                                          shorten_the_name(product.product_name)
+                                          shorten_the_name(
+                                            product.product_name,
+                                          ),
                                         )}
                                       </a>
                                     </h3>
@@ -336,7 +339,7 @@ const ListingFeaturedCat = () => {
                         </div>
                       </div>
 
-                      <div className="medium-4 columns">{""}</div>
+                      <div className="medium-4 columns">{''}</div>
                     </div>
                   </div>
 
@@ -350,28 +353,28 @@ const ListingFeaturedCat = () => {
                     <div
                       className="medium-12 columns"
                       // style={{ marginTop: '20px' }}
-                      style={{ marginTop: "2px" }}
+                      style={{ marginTop: '2px' }}
                     >
                       {showingTrees2([item.tree2[0]])}
                     </div>
                   )}
                 </div>
               </Fragment>
-            )
+            ),
         )}
     </Fragment>
   );
 };
 
-const showingTrees = tree => (
+const showingTrees = (tree) => (
   <div className="row">
     {tree.map(({ cat_info, products }) => (
       <div
         className="medium-4 columns featureCatTreeImgDes"
-        style={{ float: "left", paddingLeft: "0" }}
+        style={{ float: 'left', paddingLeft: '0' }}
         key={cat_info.id}
       >
-        <h1 style={{ fontSize: "12px", padding: "2px" }}>
+        <h1 style={{ fontSize: '12px', padding: '2px' }}>
           {cat_info.category_name}
           <a href={`/productList/${cat_info.id}`}>
             {products.length > 2 && (
@@ -380,7 +383,7 @@ const showingTrees = tree => (
           </a>
         </h1>
         {products.length > 0 &&
-          products.map(product => (
+          products.map((product) => (
             <a
               href={`/productDetails/${product.product_id}`}
               key={product.product_id}
@@ -388,9 +391,9 @@ const showingTrees = tree => (
               <div
                 className="col-md-4"
                 style={{
-                  paddingLeft: "2px",
-                  paddingRight: "2px",
-                  float: "left"
+                  paddingLeft: '2px',
+                  paddingRight: '2px',
+                  float: 'left',
                 }}
               >
                 <div className="frameFeatureCatSm">
@@ -404,7 +407,7 @@ const showingTrees = tree => (
                       <span className="featuredcat_new_label_discount_topSelection">
                         {calDiscountPercentage(
                           product.discountAmount,
-                          product.productPrice
+                          product.productPrice,
                         )}
                         %
                       </span>
@@ -442,11 +445,11 @@ const showingTrees = tree => (
   </div>
 );
 
-const showingTrees2 = tree => (
+const showingTrees2 = (tree) => (
   <div className="row">
     {tree.map(({ cat_info, products }) => (
       <div className="medium-12 columns" key={cat_info.id}>
-        <h1 style={{ fontSize: "12px", marginLeft: "-5px", marginTop: "10px" }}>
+        <h1 style={{ fontSize: '12px', marginLeft: '-5px', marginTop: '10px' }}>
           {cat_info.category_name}
           <a href={`/productList/${cat_info.id}`}>
             {products.length > 2 && (
@@ -457,12 +460,12 @@ const showingTrees2 = tree => (
 
         {products.length > 0 && (
           <div className="row small-up-3 moreCat">
-            {products.map(product => (
+            {products.map((product) => (
               <div
                 className="column"
                 style={{
-                  paddingRight: "10px",
-                  paddingLeft: "10px"
+                  paddingRight: '10px',
+                  paddingLeft: '10px',
                 }}
               >
                 <a href={`/productDetails/${product.product_id}`}>
@@ -477,7 +480,7 @@ const showingTrees2 = tree => (
                         <span className="featuredcat_new_label_discount_topSelemob">
                           {calDiscountPercentage(
                             product.discountAmount,
-                            product.productPrice
+                            product.productPrice,
                           )}
                           %
                         </span>
@@ -517,8 +520,5 @@ const showingTrees2 = tree => (
     ))}
   </div>
 );
-
-
-
 
 export default ListingFeaturedCat;

@@ -447,16 +447,16 @@ class ProductDetails extends React.Component {
           <meta name="description" content="page containing product details" />
           <link rel="stylesheet" href="/css/product-details.css" />
 
-          <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+          <script
+            type="text/javascript"
+            src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"
+          ></script>
         </Head>
 
         <div className="container">
           <div className="d-none d-lg-block mt-2">
             <div className="row">
-              <div className="col-4">
-                Zoom Images
-                
-              </div>
+              <div className="col-4">Zoom Images</div>
 
               <div className="col-8">
                 <h1 className="h4 mb-n1">{productName}</h1>

@@ -52,8 +52,7 @@ const MainSlider = ({ images }) => {
         sliderClass=""
         slidesToSlide={1}
         swipeable
-
-        removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+        removeArrowOnDeviceType={['tablet', 'mobile', 'desktop']}
       >
         {images.map((item) => (
           <a
