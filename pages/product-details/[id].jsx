@@ -700,7 +700,7 @@ class ProductDetails extends React.Component {
           {/* END OF  OVERVIEW, CUSTOMER REVIEWS, SPECIFICATIONS */}
 
           {/*Same Category - Other Vendor Products*/}
-          { product_list_same_category_other_ven.length > 0 && (
+          {product_list_same_category_other_ven.length > 0 && (
             <div className="row">
               <div className="col-12">
                 <SameVendorOrSameCatProducts
@@ -713,7 +713,7 @@ class ProductDetails extends React.Component {
           )}
 
           {/*Same Vendor - Other Category Products*/}
-          { product_list_same_vendor_other_cat.length > 0 && (
+          {product_list_same_vendor_other_cat.length > 0 && (
             <div className="row">
               <div className="col-12">
                 <SameVendorOrSameCatProducts
@@ -724,7 +724,6 @@ class ProductDetails extends React.Component {
               </div>
             </div>
           )}
-          
         </div>
         {/* END OF CONTAINER  */}
       </BaseLayout>

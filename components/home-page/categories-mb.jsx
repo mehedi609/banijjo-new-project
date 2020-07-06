@@ -22,7 +22,10 @@ const CategoriesMb = ({ categories }) => {
             <AccordionItem>
               <AccordionItemHeading>
                 <AccordionItemButton>
-                  <a href={'/productList/' + category.id} className="accordion__link">
+                  <a
+                    href={'/productList/' + category.id}
+                    className="accordion__link"
+                  >
                     {category.category_name}
                   </a>
                 </AccordionItemButton>
@@ -33,7 +36,10 @@ const CategoriesMb = ({ categories }) => {
                     subcategories.map(({ category, lastChilds }) => (
                       <div className="col-md-4 col-6" key={category.id}>
                         <h1 className="h6">
-                          <a href={'/productList/' + category.id} className="accordion__link">
+                          <a
+                            href={'/productList/' + category.id}
+                            className="accordion__link"
+                          >
                             {category.category_name}
                           </a>
                         </h1>
@@ -41,7 +47,10 @@ const CategoriesMb = ({ categories }) => {
                           {lastChilds.length > 0 &&
                             lastChilds.map((category) => (
                               <li key={category.id}>
-                                <a href={'/productList/' + category.id} className="accordion__link">
+                                <a
+                                  href={'/productList/' + category.id}
+                                  className="accordion__link"
+                                >
                                   {category.category_name}
                                 </a>
                               </li>
