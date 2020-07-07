@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import Router from 'next/router'
+
 // import FacebookLogin from 'react-facebook-login';
 // import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 const LoginWithFacebook = ({ submittedData }) => {
-
   
   const componentClicked = () => {
     console.log( "Clicked!" )
@@ -13,6 +14,8 @@ const LoginWithFacebook = ({ submittedData }) => {
   const responseFacebook = response => {
     console.log(response);
     submittedData(response);
+
+    Router.push('/')
   };
 
   const onFailure = response => {
@@ -26,7 +29,7 @@ const LoginWithFacebook = ({ submittedData }) => {
   return (
     <FacebookLogin
       appId={banijjo_com_bd}
-      autoLoad={true}
+      // autoLoad={true}
       fields="name,email,picture"
       callback={responseFacebook}
       onFailure={onFailure}
