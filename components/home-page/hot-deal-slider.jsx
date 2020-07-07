@@ -1,9 +1,8 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import ProductCard from '../shared/product-card';
-// import Product_Card from '../shared/Product_Card';
 
-const HotDeal = ({ products }) => {
+const HotDealSlider = ({ products }) => {
   return (
     <>
       <Carousel
@@ -55,7 +54,6 @@ const HotDeal = ({ products }) => {
       >
         {products.map((product) => (
           <div className="mr-1" key={product.product_id}>
-            {/* <ProductCard product={product} /> */}
             <ProductCard product={product} />
           </div>
         ))}
@@ -64,4 +62,4 @@ const HotDeal = ({ products }) => {
   );
 };
 
-export default HotDeal;
+export default HotDealSlider;

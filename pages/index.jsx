@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -7,7 +7,6 @@ import { capitalizeStr } from 'utils/utils';
 import { fetcher } from 'utils/fetcher';
 
 import BaseLayout from 'components/layout/base-layout';
-import HotDeal from 'components/home-page/hot-deal';
 import MainSlider from 'components/home-page/main-slider';
 import SubSlider from 'components/home-page/sub-slider';
 
@@ -17,9 +16,8 @@ import CategoriesMb from '../components/home-page/category-sidebar/categories-mb
 
 import VendorCarouselSlider from '../components/home-page/vendor-carousel-slider';
 import MainCategoriesSidebar from '../components/home-page/category-sidebar/main-categories-sidebar';
+import HotDealSlider from '../components/home-page/hot-deal-slider';
 // import ListingFeaturedCat from '../components/home-page/ListingFeaturedCat';
-
-const { useState } = require('react');
 
 const Home = (props) => {
   const {
@@ -45,7 +43,6 @@ const Home = (props) => {
 
   const [visibleDesk, setVisibleDesk] = useState(5);
   const [visibleMb, setVisibleMb] = useState(6);
-  // const [hasMore, setHasMore] = useState(true);
 
   const hotDealProducts = hotDeals.products;
   const bannerImagesProducts = bannerImages.products;
@@ -104,7 +101,7 @@ const Home = (props) => {
 
           <div className="mt-4">
             <h1 className="h5">{capitalizeStr(hotDeals.title)}</h1>
-            <HotDeal products={hotDealProducts} />
+            <HotDealSlider products={hotDealProducts} />
           </div>
 
           <div className="row mt-4">
