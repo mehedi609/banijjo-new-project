@@ -2,8 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'styles/fontawesome/css/all.min.css';
 import 'react-multi-carousel/lib/styles.css';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
 // import 'react-accessible-accordion/dist/fancy-example.css';
 import 'styles/custom-styles.css';
 import 'styles/footer.css';
