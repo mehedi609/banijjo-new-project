@@ -9,6 +9,9 @@ import AppLink from './AppLink';
 const fileUrl = 'https://admin.banijjo.com.bd/';
 
 const Product_Card = ({ product }) => {
+
+  product['images'] = JSON.parse(product.image)
+
   return (
     <>
       <div className="card">
@@ -18,7 +21,9 @@ const Product_Card = ({ product }) => {
         >
           <img
             className="card-img-top"
-            src={`${fileUrl}/upload/product/productImages/${product.home_image}`}
+            src={`${fileUrl}/upload/product/productImages/${product.home_image}`}            
+            onMouseOver={e => (e.currentTarget.src = `${fileUrl}/upload/product/productImages/${product.images[1].imageName}` )}
+            onMouseOut={e => (e.currentTarget.src = `${fileUrl}/upload/product/productImages/${product.home_image}` )}
             alt={capitalizeStr(product.product_name)}
             title={capitalizeStr(product.product_name)}
           />

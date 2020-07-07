@@ -3,6 +3,7 @@ import FacebookLogin from 'react-facebook-login';
 // import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
 const LoginWithFacebook = ({ submittedData }) => {
+  
   const responseFacebook = response => {
     console.log({ success: response });
     submittedData(response);

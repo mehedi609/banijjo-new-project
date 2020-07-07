@@ -76,13 +76,26 @@ class Registration extends React.Component {
           ></script>
         </Head>
 
+        <div className="container">
+        {/* desktop view */}
+        <div className="d-none d-lg-block">
+        <div className="row">
+        <div className="col-md-8">
+        <img
+              className="img-fluid mt-4"
+              src="https://admin.banijjo.com.bd/upload/product/productImages/banner3.png"
+              alt="Ads"
+              title="Ads"
+            />
+        </div>
+        <div className="col-md-4">
         <div className="login-form">
           <div className="login-form-div">
             <form onSubmit={this.onFormSubmit}>
               <h2 className="text-center">Sign Up</h2>
               <div className="form-group">
                 <div className="input-group">
-                  <span className="input-group-addon">
+                  <span className="input-group-text">
                     <i className="fa fa-user" />
                   </span>
                   <input
@@ -98,7 +111,7 @@ class Registration extends React.Component {
               </div>
               <div className="form-group">
                 <div className="input-group">
-                  <span className="input-group-addon">
+                  <span className="input-group-text">
                     <i className="fa fa-lock" />
                   </span>
                   <input
@@ -120,7 +133,7 @@ class Registration extends React.Component {
                   Sign up
                 </button>
               </div>
-
+​
               {email_error && (
                 <div className="has-error">
                   <p className="help-block text-center text-danger">
@@ -128,9 +141,9 @@ class Registration extends React.Component {
                   </p>
                 </div>
               )}
-
+​
               <div className="clearfix" />
-
+​
               <div className="or-seperator">
                 <i>or</i>
               </div>
@@ -151,6 +164,107 @@ class Registration extends React.Component {
             </AppLink>
           </div>
         </div>
+        </div>
+        </div>
+        </div>
+​
+        {/* mobile view */}
+​
+        <div className="d-lg-none">
+​
+        <div className="row">
+      
+        <div className="col-md-4">
+        <div className="login-form">
+          <div className="login-form-div">
+            <form onSubmit={this.onFormSubmit}>
+              <h2 className="text-center">Sign Up</h2>
+              <div className="form-group">
+                <div className="input-group">
+                  <span className="input-group-text">
+                    <i className="fa fa-user" />
+                  </span>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="email"
+                    onChange={this.onChangeHandler}
+                    value={email}
+                    placeholder="Email"
+                    required="required"
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="input-group">
+                  <span className="input-group-text">
+                    <i className="fa fa-lock" />
+                  </span>
+                  <input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    onChange={this.onChangeHandler}
+                    value={password}
+                    placeholder="Password"
+                    required="required"
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <button
+                  type="submit"
+                  className="btn btn-success btn-block login-btn"
+                >
+                  Sign up
+                </button>
+              </div>
+​
+              {email_error && (
+                <div className="has-error">
+                  <p className="help-block text-center text-danger">
+                    Email Already Exists! Use Another One.
+                  </p>
+                </div>
+              )}
+​
+              <div className="clearfix" />
+​
+              <div className="or-seperator">
+                <i>or</i>
+              </div>
+            </form>
+            {/*Social login*/}
+            <div className="text-center social-btn">
+              <SocialLogin setAuthentication={setAuthentication} />
+            </div>
+          </div>
+          <div className="hint-text">
+            Already have an account?{' '}
+            <AppLink
+              href={`/auth/login`}
+              as={`/auth/login`}
+              className="text-success"
+            >
+              <a>Login Now!</a>
+            </AppLink>
+          </div>
+        </div>
+        </div>
+​
+        <div className="col-md-8">
+        <img
+              className="img-fluid mt-4"
+              src="https://admin.banijjo.com.bd/upload/product/productImages/banner3.png"
+              alt="Ads"
+              title="Ads"
+            />
+        </div>
+        </div>
+        </div>
+        </div>
+      
+      
       </BaseLayout>
     );
   }
