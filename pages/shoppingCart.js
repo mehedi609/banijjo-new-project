@@ -5,11 +5,11 @@ import BaseLayout from '../components/layout/base-layout';
 
 import Product_Card from '../components/shared/Product_Card';
 import ProductListBreadCrumb from '../components/shared/productListBreadCrumb';
-import Categories from '../components/home-page/mainCategories';
 import CategoriesMb from '../components/home-page/category-sidebar/categories-mb';
 
 import { fetcher } from 'utils/fetcher';
 import axios from 'axios';
+import MainCategoriesSidebar from '../components/home-page/category-sidebar/main-categories-sidebar';
 
 // const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
 const fileUrl = 'https://admin.banijjo.com.bd/';
@@ -698,7 +698,7 @@ class ShoppingCart extends React.Component {
           <div className="row">
             <div className="col-3">
               <div className="d-none d-lg-block">
-                <Categories categories={categories} />
+                <MainCategoriesSidebar categories={categories} />
               </div>
 
               <div className="d-block d-lg-none mb-4">

@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Product_Card from '../../components/shared/Product_Card';
-
-// const fileUrl = process.env.NEXT_PUBLIC_FILE_URL';
-const fileUrl = 'https://admin.banijjo.com.bd/';
+import ProductCard from '../shared/product-card';
 
 const SameVendorOrSameCatProducts = ({ vorc, id, products }) => {
   const [otherProducts] = useState(products);
@@ -64,7 +61,7 @@ const SameVendorOrSameCatProducts = ({ vorc, id, products }) => {
               className="col-md-5ths mb-3 custom-fade-in"
               key={product.product_id}
             >
-              <Product_Card product={product} />
+              <ProductCard product={product} />
             </div>
           ))}
         </InfiniteScroll>

@@ -7,7 +7,7 @@ const options = {
   headers: { 'Content-Type': 'application/json' },
 };
 
-const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
+const base = process.env.FRONTEND_SERVER_URL;
 
 const SocialLogin = ({ setAuthentication, history }) => {
   const handleSocialData = ({ name, email, id }) => {
