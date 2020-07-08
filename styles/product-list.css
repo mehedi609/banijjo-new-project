@@ -34,14 +34,11 @@
   font-weight: 700;
 }
 
-.breadcrumbProduct a, .breadcrumbProduct:hover{
-	color: #009345;
-
+.breadcrumbProduct a,
+.breadcrumbProduct:hover {
+  color: #009345;
 }
 
-.btn-contact{
-  background-color:#009345 ;
+.btn-contact {
+  background-color: #009345;
 }
-
-
-
