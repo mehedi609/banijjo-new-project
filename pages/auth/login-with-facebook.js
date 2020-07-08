@@ -29,7 +29,7 @@ const LoginWithFacebook = ({ submittedData }) => {
   return (
     <FacebookLogin
       appId={banijjo_com_bd}
-      // autoLoad={true}
+      // autoLoad={true} // when true triggers callback and if logged in, redirects
       fields="name,email,picture"
       callback={responseFacebook}
       onFailure={onFailure}
