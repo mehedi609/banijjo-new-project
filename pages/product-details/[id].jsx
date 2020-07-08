@@ -56,7 +56,7 @@ class ProductDetails extends React.Component {
                   "/upload/product/productDescriptionImages/" +
                   item.descriptionImage
                 }
-                alt={""}
+                alt={item.descriptionImage}
               />
             ) : (
               ""

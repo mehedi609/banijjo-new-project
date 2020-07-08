@@ -14,11 +14,13 @@ const ListingVendorImages = ({ vendorImages }) => {
                 <img
                   src={`${fileUrl}/upload/vendor/${logo}`}
                   className="img-fluid"
+                  alt={vendor_id}
                 />
               ) : (
                 <img
                   src={`${fileUrl}/upload/vendor/default.png`}
                   className="img-fluid"
+                  alt={vendor_id}
                 />
               )}
             </a>
