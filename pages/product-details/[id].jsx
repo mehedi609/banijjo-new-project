@@ -2,12 +2,11 @@ import React, { Fragment } from 'react';
 import Head from 'next/head';
 import Carousel from 'react-multi-carousel';
 import BaseLayout from '../../components/layout/base-layout';
-import SameVendorOrSameCatProducts from './SameVendorOrSameCatProducts';
 
 import { fetcher } from 'utils/fetcher';
+import SameVendorOrSameCatProducts from '../../components/product-details/SameVendorOrSameCatProducts';
 
-// const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
-const fileUrl = 'https://admin.banijjo.com.bd/';
+const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -20,8 +19,6 @@ class ProductDetails extends React.Component {
     this.addWishLocal = this.addWishLocal.bind(this);
     this.createAccountNext = this.createAccountNext.bind(this);
     this.customerLoginSubmit = this.customerLoginSubmit.bind(this);
-
-    console.log(this.state);
   }
 
   handleClickMinus = () => {

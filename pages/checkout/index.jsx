@@ -1,19 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-
 import BaseLayout from '../../components/layout/base-layout';
-
-import Product_Card from '../../components/shared/Product_Card';
-import ProductListBreadCrumb from '../../components/shared/productListBreadCrumb';
-import Categories from '../../components/home-page/mainCategories';
-import CategoriesMb from '../../components/home-page/category-sidebar/categories-mb';
-
-import { fetcher } from 'utils/fetcher';
-import axios from 'axios';
-
-// const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
-const fileUrl = 'https://admin.banijjo.com.bd/';
-const base = process.env.FRONTEND_SERVER_URL;
 
 const emailPattern = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 

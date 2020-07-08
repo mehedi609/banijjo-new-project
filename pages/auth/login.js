@@ -47,7 +47,7 @@ class Login extends React.Component {
   render() {
     const { email, password, error } = this.state;
     const { setAuthentication } = this.props;
-    console.log(this.props);
+    
     return (
       <BaseLayout>
         <Head>
@@ -66,14 +66,10 @@ class Login extends React.Component {
         </Head>
 
         <div className="container">
-
-
-
           {/* desktop view  */}
 
           <div className="d-none d-lg-block">
-            <div className="row" style={{ alignItems: "center" }}>
-
+            <div className="row" style={{ alignItems: 'center' }}>
               <div className="col-md-8">
                 <img
                   className="img-fluid mt-4"
@@ -127,7 +123,10 @@ class Login extends React.Component {
                         </button>
                       </div>
                       <div className="clearfix">
-                        <a href="#!" className="pull-right text-success disabled">
+                        <a
+                          href="#!"
+                          className="pull-right text-success disabled"
+                        >
                           Forgot Password?
                         </a>
                       </div>
@@ -163,17 +162,13 @@ class Login extends React.Component {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-
-
 
           {/* mobile view */}
 
           <div className="d-lg-none">
-            <div className="row" style={{ justifyContent: "center" }}>
-
+            <div className="row" style={{ justifyContent: 'center' }}>
               <div className="col-md-8 col-sm-12">
                 <div className="login-form">
                   <div className="login-form-div">
@@ -215,19 +210,22 @@ class Login extends React.Component {
                           className="btn btn-success btn-block login-btn"
                         >
                           Sign in
-                      </button>
+                        </button>
                       </div>
                       <div className="clearfix">
-                        <a href="#!" className="pull-right text-success disabled">
+                        <a
+                          href="#!"
+                          className="pull-right text-success disabled"
+                        >
                           Forgot Password?
-                      </a>
+                        </a>
                       </div>
 
                       {error && (
                         <div className="has-error">
                           <p className="help-block text-center text-danger">
                             Email or Password is not valid! Try Again.
-                        </p>
+                          </p>
                         </div>
                       )}
 
@@ -255,7 +253,6 @@ class Login extends React.Component {
                 </div>
               </div>
 
-
               <div className="col-12">
                 <img
                   className="img-fluid mt-4"
@@ -264,13 +261,9 @@ class Login extends React.Component {
                   title="Ads"
                 />
               </div>
-
             </div>
           </div>
-
-
         </div>
-        
       </BaseLayout>
     );
   }

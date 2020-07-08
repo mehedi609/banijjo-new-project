@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -7,7 +7,6 @@ import { capitalizeStr } from 'utils/utils';
 import { fetcher } from 'utils/fetcher';
 
 import BaseLayout from 'components/layout/base-layout';
-import HotDeal from 'components/home-page/hot-deal';
 import MainSlider from 'components/home-page/main-slider';
 import SubSlider from 'components/home-page/sub-slider';
 
@@ -17,9 +16,9 @@ import CategoriesMb from '../components/home-page/category-sidebar/categories-mb
 
 import VendorCarouselSlider from '../components/home-page/vendor-carousel-slider';
 import MainCategoriesSidebar from '../components/home-page/category-sidebar/main-categories-sidebar';
+import HotDealSlider from '../components/home-page/hot-deal-slider';
+import ListingFeaturedCategoryTree from '../components/home-page/listing-featured-category-tree';
 // import ListingFeaturedCat from '../components/home-page/ListingFeaturedCat';
-
-const { useState } = require('react');
 
 const Home = (props) => {
   const {
@@ -33,6 +32,7 @@ const Home = (props) => {
     others,
     categories,
     vendors,
+    featuredCategories,
   } = props;
 
   const [otherProducts, setOtherProducts] = useState(others.products);
@@ -45,7 +45,6 @@ const Home = (props) => {
 
   const [visibleDesk, setVisibleDesk] = useState(5);
   const [visibleMb, setVisibleMb] = useState(6);
-  // const [hasMore, setHasMore] = useState(true);
 
   const hotDealProducts = hotDeals.products;
   const bannerImagesProducts = bannerImages.products;
@@ -104,7 +103,7 @@ const Home = (props) => {
 
           <div className="mt-4">
             <h1 className="h5">{capitalizeStr(hotDeals.title)}</h1>
-            <HotDeal products={hotDealProducts} />
+            <HotDealSlider products={hotDealProducts} />
           </div>
 
           <div className="row mt-4">
@@ -194,7 +193,12 @@ const Home = (props) => {
             <VendorCarouselSlider vendors={vendors.vendors} />
           </div>
 
-          {/*<ListingFeaturedCat />*/}
+          <div className="mt-4">
+            <h1 className="h5">Featured Categories</h1>
+            <ListingFeaturedCategoryTree
+              featuredCategories={featuredCategories}
+            />
+          </div>
 
           <div className="d-none d-lg-block mt-4">
             <h1 className="h5">{capitalizeStr(others.title)}</h1>
@@ -252,6 +256,7 @@ export const getStaticProps = async () => {
   const res2 = await fetcher(`${base}/api/top_main_banners`);
   const res3 = await fetcher(`${base}/api/all_category_list`);
   const res_vendor = await fetcher(`${base}/api/vendors`);
+  const featuredCategories = await fetcher(`${base}/api/feature_category`);
 
   const mainSliderImages = res2.data;
   const categories = res3.data;
@@ -299,6 +304,7 @@ export const getStaticProps = async () => {
       others,
       categories,
       vendors,
+      featuredCategories,
     },
   };
 };

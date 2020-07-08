@@ -52,8 +52,7 @@
 .input-group-addon .fa {
   font-size: 18px;
 }
-​
-a.disabled {
+​ a.disabled {
   /* Make the disabled links grayish*/
   color: gray;
   /* And disable the pointer events */

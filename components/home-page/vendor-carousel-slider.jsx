@@ -12,7 +12,7 @@ const VendorCarouselSlider = ({ vendors }) => {
         <Carousel
           additionalTransfrom={1}
           arrows
-          // autoPlay
+          autoPlay
           autoPlaySpeed={2000}
           centerMode={false}
           className=""
@@ -32,7 +32,7 @@ const VendorCarouselSlider = ({ vendors }) => {
                 max: 3000,
                 min: 992,
               },
-              items: 5,
+              items: 8,
               partialVisibilityGutter: 40,
             },
             tablet: {
@@ -40,14 +40,14 @@ const VendorCarouselSlider = ({ vendors }) => {
                 max: 991.98,
                 min: 576,
               },
-              items: 3,
+              items: 5,
             },
             mobile: {
               breakpoint: {
                 max: 575.98,
                 min: 0,
               },
-              items: 1,
+              items: 3,
             },
           }}
           showDots={false}
@@ -58,7 +58,7 @@ const VendorCarouselSlider = ({ vendors }) => {
         >
           {vendors.length > 0 &&
             vendors.map(({ name, vendor_id, logo }) => (
-              <div className="card" style={{ width: '12rem' }} key={vendor_id}>
+              <div className="card mr-1" key={vendor_id}>
                 <AppLink href="/vendor/[id]" as={`/vendor/${vendor_id}`}>
                   <img
                     className="card-img-top cursor-pointer"
