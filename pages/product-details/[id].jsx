@@ -1,10 +1,13 @@
-import React, { Fragment } from 'react';
-import Head from 'next/head';
-import Carousel from 'react-multi-carousel';
-import BaseLayout from '../../components/layout/base-layout';
+import React, { Fragment } from "react";
+import Head from "next/head";
 
-import { fetcher } from 'utils/fetcher';
-import SameVendorOrSameCatProducts from '../../components/product-details/SameVendorOrSameCatProducts';
+import Carousel from "react-multi-carousel";
+import ReactImageZoom from "react-image-zoom";
+
+import BaseLayout from "../../components/layout/base-layout";
+
+import { fetcher } from "utils/fetcher";
+import SameVendorOrSameCatProducts from "../../components/product-details/SameVendorOrSameCatProducts";
 
 const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
 
@@ -50,13 +53,13 @@ class ProductDetails extends React.Component {
               <img
                 src={
                   fileUrl +
-                  '/upload/product/productDescriptionImages/' +
+                  "/upload/product/productDescriptionImages/" +
                   item.descriptionImage
                 }
-                alt={''}
+                alt={""}
               />
             ) : (
-              ''
+              ""
             )}
 
             <p>{item.description}</p>
@@ -65,7 +68,7 @@ class ProductDetails extends React.Component {
       });
     } else {
       descriptionText.push(
-        <p style={{ color: '#ec1c24' }}>No Descriptions Added</p>
+        <p style={{ color: "#ec1c24" }}>No Descriptions Added</p>
       );
     }
     return descriptionText;
@@ -104,8 +107,8 @@ class ProductDetails extends React.Component {
 
     const selectedProduct = {
       productId,
-      colorId: selectedColorId === '' ? 0 : selectedColorId * 1,
-      sizeId: selectedSizeId === '' ? 0 : selectedSizeId * 1,
+      colorId: selectedColorId === "" ? 0 : selectedColorId * 1,
+      sizeId: selectedSizeId === "" ? 0 : selectedSizeId * 1,
     };
 
     const isExists = this.state.combinations.filter((item) => {
@@ -139,34 +142,34 @@ class ProductDetails extends React.Component {
     } = this.state;
 
     if (onlyColor) {
-      if (this.state.selectedColorId === '') {
-        this.showAlert('Please Select a Color');
+      if (this.state.selectedColorId === "") {
+        this.showAlert("Please Select a Color");
         return;
       }
     } else if (onlySize) {
-      if (this.state.selectedSizeId === '')
-        this.showAlert('Please Select a Size');
+      if (this.state.selectedSizeId === "")
+        this.showAlert("Please Select a Size");
     } else if (!noColorAndSize) {
-      if (this.state.selectedColorId === '') {
-        this.showAlert('Please Select a Color');
+      if (this.state.selectedColorId === "") {
+        this.showAlert("Please Select a Color");
         return;
       }
 
-      if (this.state.selectedSizeId === '') {
-        this.showAlert('Please Select a Size');
+      if (this.state.selectedSizeId === "") {
+        this.showAlert("Please Select a Size");
         return;
       }
     }
 
     if (!this.isSelectedProductExists()) {
-      this.showAlert('Product is Out of Stock!');
+      this.showAlert("Product is Out of Stock!");
       return;
     }
 
     const cartObj = {
       productId,
-      colorId: selectedColorId === '' ? 0 : selectedColorId * 1,
-      sizeId: selectedSizeId === '' ? 0 : selectedSizeId * 1,
+      colorId: selectedColorId === "" ? 0 : selectedColorId * 1,
+      sizeId: selectedSizeId === "" ? 0 : selectedSizeId * 1,
       quantity: productQuantity * 1,
     };
 
@@ -197,17 +200,17 @@ class ProductDetails extends React.Component {
       } else {
         localStorage.setItem(data, JSON.stringify([{ ...cartObj }]));
       }
-      let id = '';
-      if (data === 'cart') id = 'successCartMessage';
-      else if (data === 'wish') id = 'WishListModalButton';
+      let id = "";
+      if (data === "cart") id = "successCartMessage";
+      else if (data === "wish") id = "WishListModalButton";
       var link = document.getElementById(id);
       link.click();
     } else {
-      fetch(base + '/api/add_cart_direct', {
-        method: 'POST',
+      fetch(base + "/api/add_cart_direct", {
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...cartObj,
@@ -220,9 +223,9 @@ class ProductDetails extends React.Component {
         })
         .then((response) => {
           if (response.data === true) {
-            let id = '';
-            if (data === 'cart') id = 'successCartMessage';
-            else if (data === 'wish') id = 'WishListModalButton';
+            let id = "";
+            if (data === "cart") id = "successCartMessage";
+            else if (data === "wish") id = "WishListModalButton";
             var link = document.getElementById(id);
             link.click();
           }
@@ -231,11 +234,11 @@ class ProductDetails extends React.Component {
   };
 
   addCartDirect = (data) => (e) => {
-    fetch(base + '/api/add_cart_direct', {
-      method: 'POST',
+    fetch(base + "/api/add_cart_direct", {
+      method: "POST",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         productId: this.state.productId,
@@ -248,7 +251,7 @@ class ProductDetails extends React.Component {
       })
       .then((response) => {
         if (response.data === true) {
-          var link = document.getElementById('successCartMessage');
+          var link = document.getElementById("successCartMessage");
           link.click();
         }
       });
@@ -276,11 +279,11 @@ class ProductDetails extends React.Component {
   };
 
   addWishDirect() {
-    fetch(base + '/api/add_wish_direct', {
-      method: 'POST',
+    fetch(base + "/api/add_wish_direct", {
+      method: "POST",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         productId: this.state.productId,
@@ -293,7 +296,7 @@ class ProductDetails extends React.Component {
       })
       .then((response) => {
         if (response.data === true) {
-          var link = document.getElementById('WishListModalButton');
+          var link = document.getElementById("WishListModalButton");
           link.click();
         }
       });
@@ -301,11 +304,11 @@ class ProductDetails extends React.Component {
 
   customerLoginSubmit(event) {
     event.preventDefault();
-    fetch(base + '/api/loginCustomerInitial', {
-      method: 'POST',
+    fetch(base + "/api/loginCustomerInitial", {
+      method: "POST",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: event.target.emailField.value,
@@ -318,11 +321,11 @@ class ProductDetails extends React.Component {
         return res.json();
       })
       .then((response) => {
-        console.log('aa', response);
-        if (response.data !== '') {
-          localStorage.setItem('customer_id', response.data);
-          var link = document.getElementById('successCartMessage');
-          var hide = document.getElementById('hideLogin');
+        console.log("aa", response);
+        if (response.data !== "") {
+          localStorage.setItem("customer_id", response.data);
+          var link = document.getElementById("successCartMessage");
+          var hide = document.getElementById("hideLogin");
           hide.click();
           link.click();
         }
@@ -331,9 +334,9 @@ class ProductDetails extends React.Component {
 
   createAccountNext(event) {
     event.preventDefault();
-    if (event.target.email.value === '' || event.target.email.value == null) {
+    if (event.target.email.value === "" || event.target.email.value == null) {
       this.setState({
-        emailError: 'Email cannot be empty',
+        emailError: "Email cannot be empty",
       });
       return false;
     } else if (
@@ -341,23 +344,23 @@ class ProductDetails extends React.Component {
       event.target.email.value > 0
     ) {
       this.setState({
-        emailError: 'Enter a valid Password',
+        emailError: "Enter a valid Password",
       });
       return false;
     } else if (
-      event.target.password.value === '' ||
+      event.target.password.value === "" ||
       event.target.password.value == null
     ) {
       this.setState({
-        passwordError: 'Password cannot be empty',
+        passwordError: "Password cannot be empty",
       });
       return false;
     } else {
-      fetch(base + '/api/saveCustomerInitial', {
-        method: 'POST',
+      fetch(base + "/api/saveCustomerInitial", {
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: event.target.email.value,
@@ -370,10 +373,10 @@ class ProductDetails extends React.Component {
           return res.json();
         })
         .then((response) => {
-          if (response.data !== '') {
-            localStorage.setItem('customer_id', response.data);
-            var hideLogin = document.getElementById('hideLogin');
-            var link = document.getElementById('successCartMessage');
+          if (response.data !== "") {
+            localStorage.setItem("customer_id", response.data);
+            var hideLogin = document.getElementById("hideLogin");
+            var link = document.getElementById("successCartMessage");
             hideLogin.click();
             link.click();
           }
@@ -394,9 +397,9 @@ class ProductDetails extends React.Component {
 
   showAlert(text) {
     swal({
-      title: 'Warning!',
+      title: "Warning!",
       text,
-      icon: 'warning',
+      icon: "warning",
       timer: 4000,
       button: false,
     });
@@ -437,6 +440,17 @@ class ProductDetails extends React.Component {
       product_list_same_category_other_ven,
     } = this.state;
 
+    const props = {
+      width: 300,  
+      height: 200,    
+      scale: 1.6,
+      img: `${fileUrl}/upload/product/productImages/${homeImage}`,
+      offset: {"vertical": 0, "horizontal": 10},
+      zoomStyle: {"opacity": 1},
+    };
+
+    console.log(carouselImages)
+
     return (
       <BaseLayout>
         <Head>
@@ -453,7 +467,88 @@ class ProductDetails extends React.Component {
         <div className="container">
           <div className="d-none d-lg-block mt-2">
             <div className="row">
-              <div className="col-4">Zoom Images</div>
+              <div className="col-4 zoomImageDiv" style={{ zIndex:'1000' }}>
+
+                {/* Zoom Images */}
+                <ReactImageZoom {...props} />
+
+                <Carousel
+                  ref={
+                    el => (this.Carousel = el)
+                  } 
+                  additionalTransfrom={-20 * 5}
+                  swipeable
+                  draggable
+                  showDots={false}
+                  arrows
+                  slidesToSlide={1}
+                  // additionalTransfrom={0}
+                  autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                  autoPlaySpeed={3000}
+                  centerMode={false}
+                  className=""
+                  containerClass="container"
+                  dotListClass=""
+                  focusOnSelect={false}
+                  infinite
+                  itemClass=""
+                  sliderClass=""
+                  keyBoardControl
+                  minimumTouchDrag={50}
+                  renderButtonGroupOutside={false}
+                  renderDotsOutside={false}
+                  responsive={{
+                    desktop: {
+                      breakpoint: {
+                        max: 3000,
+                        min: 992,
+                      },
+                      items: 3,
+                      partialVisibilityGutter: 40,
+                    },
+                    tablet: {
+                      breakpoint: {
+                        max: 991.98,
+                        min: 576,
+                      },
+                      items: 2,
+                    },
+                    mobile: {
+                      breakpoint: {
+                        max: 575.98,
+                        min: 0,
+                      },
+                      items: 1,
+                    },
+                  }}                  
+                  removeArrowOnDeviceType={['tablet', 'mobile', 'desktop']}
+                >
+                  {carouselImages.map(
+                    item =>
+                      item && (
+                    <a
+                      href="#"
+                      key={item.serialNumber}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={e => {
+                        e.preventDefault();
+                        // this.setState({ showClickedImage: item.imageName });                        
+                        this.setState({ homeImage: item.imageName });                        
+                      }}
+                    >
+                      <img
+                        className="img-fluid"
+                        src={`${fileUrl}/upload/product/productImages/${item.imageName}`}
+                        alt={item.imageName}
+                        title={item.imageName}
+                        style={{  width: "10em", height:"7.5em", paddingTop: "1em", paddingLeft:"5px", paddingRight:"5px" }}
+                      />
+                    </a>
+                  ))}
+                </Carousel>
+
+              </div>
 
               <div className="col-8">
                 <h1 className="h4 mb-n1">{productName}</h1>
@@ -544,7 +639,7 @@ class ProductDetails extends React.Component {
                       </Fragment>
                     ) : (
                       <Fragment>
-                        <span>৳{this.state.productPrice}</span>{' '}
+                        <span>৳{this.state.productPrice}</span>{" "}
                         <i className="item_price">
                           ৳{this.state.productPrice - this.state.discountAmount}
                         </i>
@@ -553,13 +648,13 @@ class ProductDetails extends React.Component {
                   </p>
                   <button
                     className="btn btn-outline-success rounded-0 mr-3"
-                    onClick={this.addToLocalStorage('cart')}
+                    onClick={this.addToLocalStorage("cart")}
                   >
                     Add to cart
                   </button>
                   <button
                     className="btn btn-outline-success rounded-0"
-                    onClick={this.addToLocalStorage('wish')}
+                    onClick={this.addToLocalStorage("wish")}
                   >
                     Add to wish list
                   </button>
@@ -650,7 +745,7 @@ class ProductDetails extends React.Component {
             <div className="row">
               <div className="col-12">
                 <SameVendorOrSameCatProducts
-                  vorc={'c'}
+                  vorc={"c"}
                   id={category_id}
                   products={product_list_same_category_other_ven}
                 />
@@ -663,7 +758,7 @@ class ProductDetails extends React.Component {
             <div className="row">
               <div className="col-12">
                 <SameVendorOrSameCatProducts
-                  vorc={'v'}
+                  vorc={"v"}
                   id={vendor_id}
                   products={product_list_same_vendor_other_cat}
                 />
@@ -741,8 +836,8 @@ export const getServerSideProps = async ({ params }) => {
       productName: product_name,
       productQuantity: 1,
 
-      homeImage: !!home_image ? home_image : 'default.png',
-      showClickedImage: !!home_image ? home_image : 'default.png',
+      homeImage: !!home_image ? home_image : "default.png",
+      showClickedImage: !!home_image ? home_image : "default.png",
       product_full_description: description,
       carouselImages: !!carouselImages && carouselImages,
       qc_status: !!qc_status && qc_status,
@@ -757,9 +852,9 @@ export const getServerSideProps = async ({ params }) => {
       noColorAndSize: colors.length === 0 && sizes.length === 0,
       colorAndSize: colors.length > 0 && sizes.length > 0,
 
-      selectedSizeId: '',
-      selectedColorId: '',
-      selectedColorName: '',
+      selectedSizeId: "",
+      selectedColorId: "",
+      selectedColorName: "",
 
       combinations,
       discountAmount,

@@ -134,3 +134,9 @@ a.text-primary:hover {
 .react-multiple-carousel__arrow {
   z-index: 0;
 }
+
+
+
+div.zoomImageDiv > div > img:nth-child(1) {
+  width: 100% !important;
+}
