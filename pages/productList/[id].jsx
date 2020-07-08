@@ -2,12 +2,12 @@ import React from 'react';
 import Head from 'next/head';
 import BaseLayout from 'components/layout/base-layout';
 
-import Product_Card from 'components/shared/Product_Card';
 import ProductListBreadCrumb from 'components/shared/productListBreadCrumb';
 import CategoriesMb from 'components/home-page/category-sidebar/categories-mb';
 
 import { fetcher } from 'utils/fetcher';
 import MainCategoriesSidebar from 'components/home-page/category-sidebar/main-categories-sidebar';
+import ProductCard from '../../components/shared/product-card';
 
 const ProductList = ({ categories, productList }) => {
   return (
@@ -32,21 +32,21 @@ const ProductList = ({ categories, productList }) => {
           <div className="col-lg-9 col-md-12">
             {productList.length > 0 &&
               productList.map(({ breadcrumbs, products }) => (
-                <>
-                  <div className="row">
-                    <div className="col-12">
+                <div key={products.product_id}>
+                  <div className="row" key={products.product_id}>
+                    <div className="col-12 mt-2">
                       <ProductListBreadCrumb breadcrumbs={breadcrumbs} />
                     </div>
                   </div>
 
                   <div className="row">
                     {products.map((product) => (
-                      <div className="col-md-4">
-                        <Product_Card product={product} />
+                      <div className="col-md-4 mb-3" key={product.product_id}>
+                        <ProductCard product={product} />
                       </div>
                     ))}
                   </div>
-                </>
+                </div>
               ))}
           </div>
         </div>

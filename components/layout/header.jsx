@@ -1,4 +1,12 @@
 import React from 'react';
+import {
+  Button,
+  Navbar,
+  Nav,
+  NavItem,
+  NavDropdown,
+  MenuItem,
+} from 'react-bootstrap';
 
 const Header = () => {
   return (
@@ -36,6 +44,65 @@ const Header = () => {
 
                 <div className="col-9">
                   <div className="float-right">
+                    <Navbar expand="lg">
+                      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                      <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                          <Nav.Link href="/">Home</Nav.Link>
+
+                          <Nav.Link href="#">
+                            <i className="fas fa-sign-in-alt pr-1" />
+                            Seller Center
+                          </Nav.Link>
+
+                          <Nav.Link href="#">
+                            <i className="fas fa-rss pr-1" />
+                            Blog
+                          </Nav.Link>
+
+                          <Nav.Link href="#">
+                            <i className="fas fa-lock pr-1" />
+                            Buyer Protection
+                          </Nav.Link>
+
+                          <Nav.Link href="#">
+                            <i className="far fa-heart pr-1" />
+                            Wish List
+                          </Nav.Link>
+
+                          <NavDropdown title="Account" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="#">
+                              <i
+                                className="far fa-user pr-1"
+                                aria-hidden="true"
+                              />
+                              Account
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="/auth/login">
+                              <i
+                                className="far fa-user pr-1"
+                                aria-hidden="true"
+                              />
+                              Login
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="/auth/registration">
+                              <i
+                                className="far fa-user pr-1"
+                                aria-hidden="true"
+                              />
+                              Register
+                            </NavDropdown.Item>
+
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="#">
+                              Separated link
+                            </NavDropdown.Item>
+                          </NavDropdown>
+                        </Nav>
+                      </Navbar.Collapse>
+                    </Navbar>
+
+                    {/*
                     <ul className="nav">
                       <li className="nav-item">
                         <a
@@ -106,6 +173,7 @@ const Header = () => {
                         </a>
                       </li>
                     </ul>
+                    */}
                   </div>
                 </div>
               </div>

@@ -17,6 +17,7 @@ import CategoriesMb from '../components/home-page/category-sidebar/categories-mb
 import VendorCarouselSlider from '../components/home-page/vendor-carousel-slider';
 import MainCategoriesSidebar from '../components/home-page/category-sidebar/main-categories-sidebar';
 import HotDealSlider from '../components/home-page/hot-deal-slider';
+import ListingFeaturedCategoryTree from '../components/home-page/listing-featured-category-tree';
 // import ListingFeaturedCat from '../components/home-page/ListingFeaturedCat';
 
 const Home = (props) => {
@@ -31,6 +32,7 @@ const Home = (props) => {
     others,
     categories,
     vendors,
+    featuredCategories,
   } = props;
 
   const [otherProducts, setOtherProducts] = useState(others.products);
@@ -191,7 +193,12 @@ const Home = (props) => {
             <VendorCarouselSlider vendors={vendors.vendors} />
           </div>
 
-          {/*<ListingFeaturedCat />*/}
+          <div className="mt-4">
+            <h1 className="h5">Featured Categories</h1>
+            <ListingFeaturedCategoryTree
+              featuredCategories={featuredCategories}
+            />
+          </div>
 
           <div className="d-none d-lg-block mt-4">
             <h1 className="h5">{capitalizeStr(others.title)}</h1>
@@ -249,6 +256,7 @@ export const getStaticProps = async () => {
   const res2 = await fetcher(`${base}/api/top_main_banners`);
   const res3 = await fetcher(`${base}/api/all_category_list`);
   const res_vendor = await fetcher(`${base}/api/vendors`);
+  const featuredCategories = await fetcher(`${base}/api/feature_category`);
 
   const mainSliderImages = res2.data;
   const categories = res3.data;
@@ -296,6 +304,7 @@ export const getStaticProps = async () => {
       others,
       categories,
       vendors,
+      featuredCategories,
     },
   };
 };
