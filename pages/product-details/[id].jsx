@@ -441,15 +441,15 @@ class ProductDetails extends React.Component {
     } = this.state;
 
     const props = {
-      width: 300,  
-      height: 200,    
+      width: 300,
+      height: 200,
       scale: 1.6,
       img: `${fileUrl}/upload/product/productImages/${homeImage}`,
-      offset: {"vertical": 0, "horizontal": 10},
-      zoomStyle: {"opacity": 1},
+      offset: { vertical: 0, horizontal: 10 },
+      zoomStyle: { opacity: 1 },
     };
 
-    console.log(carouselImages)
+    console.log(carouselImages);
 
     return (
       <BaseLayout>
@@ -467,15 +467,12 @@ class ProductDetails extends React.Component {
         <div className="container">
           <div className="d-none d-lg-block mt-2">
             <div className="row">
-              <div className="col-4 zoomImageDiv" style={{ zIndex:'1000' }}>
-
+              <div className="col-4 zoomImageDiv" style={{ zIndex: "1000" }}>
                 {/* Zoom Images */}
                 <ReactImageZoom {...props} />
 
                 <Carousel
-                  ref={
-                    el => (this.Carousel = el)
-                  } 
+                  ref={(el) => (this.Carousel = el)}
                   additionalTransfrom={-20 * 5}
                   swipeable
                   draggable
@@ -520,34 +517,40 @@ class ProductDetails extends React.Component {
                       },
                       items: 1,
                     },
-                  }}                  
-                  removeArrowOnDeviceType={['tablet', 'mobile', 'desktop']}
+                  }}
+                  removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
                 >
                   {carouselImages.map(
-                    item =>
+                    (item) =>
                       item && (
-                    <a
-                      href="#"
-                      key={item.serialNumber}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={e => {
-                        e.preventDefault();
-                        // this.setState({ showClickedImage: item.imageName });                        
-                        this.setState({ homeImage: item.imageName });                        
-                      }}
-                    >
-                      <img
-                        className="img-fluid"
-                        src={`${fileUrl}/upload/product/productImages/${item.imageName}`}
-                        alt={item.imageName}
-                        title={item.imageName}
-                        style={{  width: "10em", height:"7.5em", paddingTop: "1em", paddingLeft:"5px", paddingRight:"5px" }}
-                      />
-                    </a>
-                  ))}
+                        <a
+                          href="#"
+                          key={item.serialNumber}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            // this.setState({ showClickedImage: item.imageName });
+                            this.setState({ homeImage: item.imageName });
+                          }}
+                        >
+                          <img
+                            className="img-fluid"
+                            src={`${fileUrl}/upload/product/productImages/${item.imageName}`}
+                            alt={item.imageName}
+                            title={item.imageName}
+                            style={{
+                              width: "10em",
+                              height: "7.5em",
+                              paddingTop: "1em",
+                              paddingLeft: "5px",
+                              paddingRight: "5px",
+                            }}
+                          />
+                        </a>
+                      )
+                  )}
                 </Carousel>
-
               </div>
 
               <div className="col-8">
