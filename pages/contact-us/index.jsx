@@ -82,7 +82,7 @@ const contactUs = () => {
             </form>
           </div>
 
-          <div className="col-md-5 offset-md-1 mt-md-5">
+          <div className="col-md-5 offset-md-1 mt-md-5 mt-3">
             <div className="row">
               <div className="col-1">
                 <i className="fas fa-map-marker-alt fa-2x text-primary" />
