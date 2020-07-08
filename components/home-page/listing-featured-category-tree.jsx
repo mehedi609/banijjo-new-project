@@ -1,6 +1,4 @@
 import React from 'react';
-import AppLink from '../shared/AppLink';
-import { capitalizeStr, shorten_the_name } from '../../utils/utils';
 
 const CardDemo = ({ maxHeight = null, customFontSize = null }) => (
   <>

@@ -18,7 +18,6 @@ import VendorCarouselSlider from '../components/home-page/vendor-carousel-slider
 import MainCategoriesSidebar from '../components/home-page/category-sidebar/main-categories-sidebar';
 import HotDealSlider from '../components/home-page/hot-deal-slider';
 import ListingFeaturedCategoryTree from '../components/home-page/listing-featured-category-tree';
-// import ListingFeaturedCat from '../components/home-page/ListingFeaturedCat';
 
 const Home = (props) => {
   const {
