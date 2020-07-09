@@ -13,3 +13,8 @@ export const shorten_the_name = (text) => {
   const length = 12;
   return text.slice(0, length) + (text.length > length ? '...' : '');
 };
+
+export const shorten_the_name_upto_six = (text) => {
+  const length = 6;
+  return text.slice(0, length) + (text.length > length ? '...' : '');
+};
