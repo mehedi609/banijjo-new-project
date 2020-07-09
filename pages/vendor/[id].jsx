@@ -127,7 +127,8 @@ class Vendor extends React.Component {
                   {item.products.length > 0 &&
                     item.products.map((product) => (
                       <div
-                        className="col-md-3 mb-md-3 mb-sm-2"
+                        // className="col-md-3 mb-md-3 mb-sm-2"
+                        className="col-vendor mb-3"
                         key={product.product_id}
                       >
                         <ProductCard product={product} />

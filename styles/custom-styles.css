@@ -85,6 +85,8 @@ a.text-primary:hover {
 
 /*cusrom 3 and 5 equal columns starts*/
 .col-3ths,
+.col-vendor,
+.col-productlist,
 .col-5ths,
 .col-sm-5ths,
 .col-md-5ths,
@@ -94,38 +96,48 @@ a.text-primary:hover {
   padding-right: 15px;
   padding-left: 15px;
 }
-
 .col-3ths {
   width: 33.33%;
   float: left;
 }
-
 .col-5ths {
   width: 20%;
   float: left;
 }
-
 @media (min-width:320px) {
   .col-md-5ths  {
     width: 50%;
     float: left;
   }
+  .col-vendor {
+    width: 50%;
+    float: left;
+  }
+  .col-productlist {
+    width: 50%;
+    float: left;
+  }
 }
-
 @media (min-width: 768px) {
   .col-sm-5ths {
     width: 20%;
     float: left;
   }
 }
-
 @media (min-width: 992px) {
   .col-md-5ths {
     width: 20%;
     float: left;
   }
+  .col-vendor {
+    width: 25%;
+    float: left;
+  }
+  .col-productlist {
+    width: 33.33%;
+    float: left;
+  }
 }
-
 @media (min-width: 1200px) {
   .col-lg-5ths {
     width: 20%;
