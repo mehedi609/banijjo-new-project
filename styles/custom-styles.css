@@ -105,6 +105,13 @@ a.text-primary:hover {
   float: left;
 }
 
+@media (min-width:320px) {
+  .col-md-5ths  {
+    width: 50%;
+    float: left;
+  }
+}
+
 @media (min-width: 768px) {
   .col-sm-5ths {
     width: 20%;
