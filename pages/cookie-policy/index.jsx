@@ -5,7 +5,6 @@ import { fetcher } from '../../utils/fetcher';
 
 const cookiePolicy = (props) => {
   const { policy } = props;
-  // console.log(policy);
 
   return (
     <BaseLayout>
