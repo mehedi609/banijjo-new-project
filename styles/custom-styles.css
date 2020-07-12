@@ -104,8 +104,8 @@ a.text-primary:hover {
   width: 20%;
   float: left;
 }
-@media (min-width:320px) {
-  .col-md-5ths  {
+@media (min-width: 320px) {
+  .col-md-5ths {
     width: 50%;
     float: left;
   }
@@ -153,8 +153,6 @@ a.text-primary:hover {
 .react-multiple-carousel__arrow {
   z-index: 0;
 }
-
-
 
 div.zoomImageDiv > div > img:nth-child(1) {
   width: 100% !important;

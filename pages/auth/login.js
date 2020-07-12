@@ -47,7 +47,7 @@ class Login extends React.Component {
   render() {
     const { email, password, error } = this.state;
     const { setAuthentication } = this.props;
-    
+
     return (
       <BaseLayout>
         <Head>
