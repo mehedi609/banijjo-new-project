@@ -1,5 +1,53 @@
 import React from 'react';
 import ScrollToTop from '../shared/scroll-to-top';
+import AppLink from '../shared/AppLink';
+
+const AboutUs = ({ mobileView }) => (
+  <ul>
+    <li>
+      <AppLink href="/policies/privacy-policy">
+        <a>Privacy Policy</a>
+      </AppLink>
+    </li>
+    <li>
+      <AppLink href="/policies/cookie-policy">
+        <a>Cookie Policy</a>
+      </AppLink>
+    </li>
+    <li>
+      <AppLink href="/policies/warranty-policy">
+        <a>Warranty Policy</a>
+      </AppLink>
+    </li>
+    <li>
+      <AppLink href="/policies/shipping-policy">
+        <a>Shipping Policy</a>
+      </AppLink>
+    </li>
+    <li>
+      <AppLink href="/policies/terms-conditions">
+        <a>Terms & Conditions</a>
+      </AppLink>
+    </li>
+    <li>
+      <AppLink href="/policies/returns-replacements">
+        <a>Returns and Replacement</a>
+      </AppLink>
+    </li>
+    <li>
+      <AppLink href="/faq">
+        <a>FAQ</a>
+      </AppLink>
+    </li>
+    {mobileView && (
+      <AppLink href="/contact-us">
+        <li>
+          <a>Contact us</a>
+        </li>
+      </AppLink>
+    )}
+  </ul>
+);
 
 const Footer = () => {
   return (
@@ -12,37 +60,12 @@ const Footer = () => {
             <div className="row">
               <div className="col-4">
                 <h1 className="h5 mt-2">About us</h1>
-                <ul className="footer-font-size">
-                  <li>
-                    <a href="/privacy-policy">Privacy Policy</a>
-                  </li>
-                  <li>
-                    <a href="/cookie-policy">Cookie Policy</a>
-                  </li>
-                  <li>
-                    <a href="/warranty-policy">Warranty Policy</a>
-                  </li>
-                  <li>
-                    <a href="/shipping-policy">Shipping Policy</a>
-                  </li>
-                  <li>
-                    <a href="/terms-conditions">Terms & Conditions</a>
-                  </li>
-                  <li>
-                    <a href="/returns-replacements">Returns and Replacement</a>
-                  </li>
-                  <li>
-                    <a href="/faq">FAQ</a>
-                  </li>
-                  <li>
-                    <a href="/contact-us">Contact us</a>
-                  </li>
-                </ul>
+                <AboutUs />
               </div>
 
               <div className="col-4">
                 <h1 className="h5 mt-2">Special Category</h1>
-                <ul className="footer-font-size">
+                <ul>
                   <li>
                     <a href="/men">Mens</a>
                   </li>
@@ -73,9 +96,11 @@ const Footer = () => {
               <div className="col-4">
                 <h1 className="h5 mt-2">Contact</h1>
 
-                <ul className="footer-font-size">
+                <ul>
                   <li>
-                    <a href="/contact-us">Contact us</a>
+                    <AppLink href="/contact-us">
+                      <a>Contact us</a>
+                    </AppLink>
                   </li>
                 </ul>
 
@@ -162,32 +187,7 @@ const Footer = () => {
             <div className="row">
               <div className="col">
                 <h1 className="h5 mt-2">About us</h1>
-                <ul className="footer-font-size">
-                  <li>
-                    <a href="/privacy-policy">Privacy Policy</a>
-                  </li>
-                  <li>
-                    <a href="/cookie-policy">Cookie Policy</a>
-                  </li>
-                  <li>
-                    <a href="/warranty-policy">Warranty Policy</a>
-                  </li>
-                  <li>
-                    <a href="/shipping-policy">Shipping Policy</a>
-                  </li>
-                  <li>
-                    <a href="/terms">Terms & Conditions</a>
-                  </li>
-                  <li>
-                    <a href="/return">Returns and Replacement</a>
-                  </li>
-                  <li>
-                    <a href="/faq">FAQ</a>
-                  </li>
-                  <li>
-                    <a href="/contact-us">Contact us</a>
-                  </li>
-                </ul>
+                <AboutUs mobileView />
               </div>
             </div>
           </div>

@@ -1,12 +1,9 @@
 import React from 'react';
 import BaseLayout from 'components/layout/base-layout';
 import Head from 'next/head';
-import { fetcher } from '../../utils/fetcher';
+import { fetcher } from '../../../utils/fetcher';
 
-const shippingPolicy = (props) => {
-  const { policy } = props;
-  // console.log(policy);
-
+const shippingPolicy = ({ policy }) => {
   return (
     <BaseLayout>
       <Head>
@@ -25,8 +22,7 @@ const shippingPolicy = (props) => {
             </h1>
 
             <p className="text-justify mt-3">
-              {policy.length > 0 &&
-                policy.map(({ terms_and_conditions }) => terms_and_conditions)}
+              {policy && policy.terms_and_conditions}
             </p>
           </div>
         </div>
@@ -38,7 +34,7 @@ const shippingPolicy = (props) => {
 export async function getStaticProps() {
   const base = process.env.FRONTEND_SERVER_URL;
 
-  const policy = await fetcher(`${base}/api/getPolicy/Shipping%20Policy`);
+  const policy = await fetcher(`${base}/api/policy/shipping-policy-5`);
 
   return {
     props: {

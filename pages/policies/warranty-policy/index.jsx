@@ -1,19 +1,16 @@
 import React from 'react';
 import BaseLayout from 'components/layout/base-layout';
 import Head from 'next/head';
-import { fetcher } from '../../utils/fetcher';
+import { fetcher } from '../../../utils/fetcher';
 
-const returnsAndReplacement = (props) => {
-  const { policy } = props;
-  // console.log(policy);
-
+const warrantyPolicy = ({ policy }) => {
   return (
     <BaseLayout>
       <Head>
-        <title>Returns and Replacement</title>
+        <title>Warranty Policy</title>
         <meta
-          name="Returns and Replacement"
-          content="page containing Returns and Replacement"
+          name="Warranty Policy"
+          content="page containing warranty policy"
         />
       </Head>
 
@@ -21,12 +18,11 @@ const returnsAndReplacement = (props) => {
         <div className="row">
           <div className="col-md-12">
             <h1 className="h3 font-weight-bold text-left mt-3">
-              Returns and Replacement
+              Warranty Policy
             </h1>
 
             <p className="text-justify mt-3">
-              {policy.length > 0 &&
-                policy.map(({ terms_and_conditions }) => terms_and_conditions)}
+              {policy && policy.terms_and_conditions}
             </p>
           </div>
         </div>
@@ -38,9 +34,7 @@ const returnsAndReplacement = (props) => {
 export async function getStaticProps() {
   const base = process.env.FRONTEND_SERVER_URL;
 
-  const policy = await fetcher(
-    `${base}/api/getPolicy/Returns%20and%20Replacement`
-  );
+  const policy = await fetcher(`${base}/api/policy/warranty-policy-4`);
 
   return {
     props: {
@@ -49,4 +43,4 @@ export async function getStaticProps() {
   };
 }
 
-export default returnsAndReplacement;
+export default warrantyPolicy;
