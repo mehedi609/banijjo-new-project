@@ -54,7 +54,9 @@ const Product_Card = ({ product }) => {
                 as={`/product-details/${product.product_id}`}
               >
                 <a className="text-primary">
-                  {capitalizeStr(shorten_the_name_upto_six(product.product_name))}
+                  {capitalizeStr(
+                    shorten_the_name_upto_six(product.product_name),
+                  )}
                 </a>
               </AppLink>
             </h1>
