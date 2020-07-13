@@ -13,7 +13,7 @@ const MainSlider = ({ images }) => {
         arrows
         autoPlaySpeed={3000}
         centerMode={false}
-        className=""
+        className="pl-0"
         containerClass="container"
         dotListClass=""
         draggable

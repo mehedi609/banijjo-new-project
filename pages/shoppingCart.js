@@ -3,7 +3,9 @@ import Head from 'next/head';
 
 import BaseLayout from '../components/layout/base-layout';
 
-import Product_Card from '../components/shared/Product_Card';
+// import Product_Card from '../components/shared/Product_Card';
+import ProductCard from '../components/shared/product-card';
+
 import ProductListBreadCrumb from '../components/shared/productListBreadCrumb';
 import CategoriesMb from '../components/home-page/category-sidebar/categories-mb';
 
@@ -732,7 +734,7 @@ class ShoppingCart extends React.Component {
                     <div className="row">
                       {products.map((product) => (
                         <div className="col-md-4">
-                          <Product_Card product={product} />
+                          <ProductCard product={product} />
                         </div>
                       ))}
                     </div>
@@ -740,40 +742,40 @@ class ShoppingCart extends React.Component {
                 ))}
 
               {/* <div className="row">
-                                <div className="col-md-4">
-                                    <div className="card card-border-radious mb-3">
-                                        <img src="https://admin.banijjo.com.bd/upload/product/productImages/2_2240x1680.png" className="card-img-top" alt="..." />
-                                        <div className="card-body custom-card-padding">
-                                            <div className="text-center">
-                                                <h5 className="card-title">Juice Crd</h5>
-                                                <p className="card-text">৳&nbsp;70</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div className="col-md-4">
+                        <div className="card card-border-radious mb-3">
+                            <img src="https://admin.banijjo.com.bd/upload/product/productImages/2_2240x1680.png" className="card-img-top" alt="..." />
+                            <div className="card-body custom-card-padding">
+                                <div className="text-center">
+                                    <h5 className="card-title">Juice Crd</h5>
+                                    <p className="card-text">৳&nbsp;70</p>
                                 </div>
-                                <div className="col-md-4">
-                                    <div className="card card-border-radious mb-3">
-                                        <img src="https://admin.banijjo.com.bd/upload/product/productImages/2_2240x1680.png" className="card-img-top" alt="..." />
-                                        <div className="card-body custom-card-padding">
-                                            <div className="text-center">
-                                                <h5 className="card-title">Juice Crd</h5>
-                                                <p className="card-text">৳&nbsp;70</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="card card-border-radious mb-3">
+                            <img src="https://admin.banijjo.com.bd/upload/product/productImages/2_2240x1680.png" className="card-img-top" alt="..." />
+                            <div className="card-body custom-card-padding">
+                                <div className="text-center">
+                                    <h5 className="card-title">Juice Crd</h5>
+                                    <p className="card-text">৳&nbsp;70</p>
                                 </div>
-                                <div className="col-md-4">
-                                    <div className="card card-border-radious mb-3">
-                                        <img src="https://admin.banijjo.com.bd/upload/product/productImages/2_2240x1680.png" className="card-img-top" alt="..." />
-                                        <div className="card-body custom-card-padding">
-                                            <div className="text-center">
-                                                <h5 className="card-title">Juice Crd</h5>
-                                                <p className="card-text">৳&nbsp;70</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="card card-border-radious mb-3">
+                            <img src="https://admin.banijjo.com.bd/upload/product/productImages/2_2240x1680.png" className="card-img-top" alt="..." />
+                            <div className="card-body custom-card-padding">
+                                <div className="text-center">
+                                    <h5 className="card-title">Juice Crd</h5>
+                                    <p className="card-text">৳&nbsp;70</p>
                                 </div>
-                            </div> */}
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
             </div>
           </div>
         </div>

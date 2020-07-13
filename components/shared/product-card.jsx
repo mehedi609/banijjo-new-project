@@ -25,19 +25,39 @@ const ProductCard = ({ product, customTitleCSS, customTextCSS }) => {
           />
         </AppLink>
 
-        {product.newProduct !== 1 && (
-          <span className="product-new-label">New</span>
-        )}
+        {/* desktop  */}
+        <div className="d-none d-lg-block">
+          {product.newProduct !== 1 && (
+            <span className="product-new-label">New</span>
+          )}
 
-        {product.discountAmount === 0 && (
-          <span className="product-new-label-discount">
-            {calDiscountPercentage(
-              product.discountAmount,
-              product.productPrice
-            )}
-            %
-          </span>
-        )}
+          {product.discountAmount === 0 && (
+            <span className="product-new-label-discount">
+              {calDiscountPercentage(
+                product.discountAmount,
+                product.productPrice
+              )}
+              %
+            </span>
+          )}
+        </div>
+
+        {/* mobile */}
+        <div className="d-block d-lg-none">
+          {product.newProduct !== 1 && (
+            <span className="product-new-label-small-carousel">New</span>
+          )}
+
+          {product.discountAmount === 0 && (
+            <span className="product-new-label-discount-small-carousel">
+              {calDiscountPercentage(
+                product.discountAmount,
+                product.productPrice
+              )}
+              %
+            </span>
+          )}
+        </div>
 
         <div className="card-body">
           <div className="text-center">

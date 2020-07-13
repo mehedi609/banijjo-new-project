@@ -2,7 +2,7 @@ import React from 'react';
 import {
   calDiscountPercentage,
   capitalizeStr,
-  shorten_the_name,
+  shorten_the_name_upto_six,
 } from 'utils/utils';
 import AppLink from './AppLink';
 // const fileUrl = process.env.NEXT_PUBLIC_FILE_URL';
@@ -33,11 +33,11 @@ const Product_Card = ({ product }) => {
         </AppLink>
 
         {product.newProduct !== 1 && (
-          <span className="product-new-label">New</span>
+          <span className="product-new-label-small-carousel">New</span>
         )}
 
         {product.discountAmount === 0 && (
-          <span className="product-new-label-discount">
+          <span className="product-new-label-discount-small-carousel">
             {calDiscountPercentage(
               product.discountAmount,
               product.productPrice,
@@ -54,7 +54,7 @@ const Product_Card = ({ product }) => {
                 as={`/product-details/${product.product_id}`}
               >
                 <a className="text-primary">
-                  {capitalizeStr(shorten_the_name(product.product_name))}
+                  {capitalizeStr(shorten_the_name_upto_six(product.product_name))}
                 </a>
               </AppLink>
             </h1>
