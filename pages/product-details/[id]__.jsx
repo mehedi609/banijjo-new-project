@@ -8,21 +8,19 @@ import BaseLayout from '../../components/layout/base-layout';
 
 import { fetcher } from 'utils/fetcher';
 import SameVendorOrSameCatProducts from '../../components/product-details/SameVendorOrSameCatProducts';
+import { isEqual } from 'lodash';
 
 const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
+const base = process.env.FRONTEND_SERVER_URL;
 
 class ProductDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ...props,
-    };
-
-    this.addWishDirect = this.addWishDirect.bind(this);
-    this.addWishLocal = this.addWishLocal.bind(this);
-    this.createAccountNext = this.createAccountNext.bind(this);
-    this.customerLoginSubmit = this.customerLoginSubmit.bind(this);
-  }
+  state = {
+    selectedSizeId: '',
+    selectedColorId: '',
+    selectedColorName: '',
+    productQuantity: 1,
+    selectedProductStockAmount: 0,
+  };
 
   handleClickMinus = () => {
     this.setState((prevState) => ({
@@ -42,68 +40,21 @@ class ProductDetails extends React.Component {
     }));
   };
 
-  productDescriptions() {
-    let descriptionText = [];
-    if (this.state.product_full_description.length > 0) {
-      this.state.product_full_description.forEach((item, key) => {
-        descriptionText.push(
-          <React.Fragment key={key}>
-            <h3>{item.title}</h3>
-            {item.descriptionImage ? (
-              <img
-                src={
-                  fileUrl +
-                  '/upload/product/productDescriptionImages/' +
-                  item.descriptionImage
-                }
-                alt={item.descriptionImage}
-              />
-            ) : (
-              ''
-            )}
+  selectSizeHandler = (e) => {
+    this.setState({ selectedSizeId: e.target.value });
+  };
 
-            <p>{item.description}</p>
-          </React.Fragment>
-        );
-      });
-    } else {
-      descriptionText.push(
-        <p style={{ color: '#ec1c24' }}>No Descriptions Added</p>
-      );
-    }
-    return descriptionText;
-  }
-
-  specificationDetailsPart() {
-    const spcArray = [];
-    if (this.state.product_specification_name.length > 1) {
-      this.state.product_specification_name.forEach((item, key) => {
-        if (key === 1) {
-          spcArray.push(<h5>{item.specificationName.toUpperCase()} :</h5>);
-          this.state.product_specification_name.forEach((item1, key1) => {
-            if (item.specificationName === item1.specificationName) {
-              spcArray.push(
-                <div className="colr ert">
-                  <div className="check">
-                    <label className="checkbox">
-                      <input type="checkbox" name="checkbox" checked="" />
-                      <i> </i>
-                      {item1.specificationNameValue}
-                    </label>
-                  </div>
-                </div>
-              );
-            }
-          });
-          spcArray.push(<div className="clearfix"> </div>);
-        }
-      });
-    }
-    return spcArray;
-  }
+  selectColorHandler = (e) => {
+    console.log(e.target);
+    this.setState({
+      selectedColorId: e.target.id,
+      selectedColorName: e.target.name,
+    });
+  };
 
   isSelectedProductExists = () => {
-    const { productId, selectedSizeId, selectedColorId } = this.state;
+    const { productId } = this.props;
+    const { selectedSizeId, selectedColorId } = this.state;
 
     const selectedProduct = {
       productId,
@@ -111,7 +62,7 @@ class ProductDetails extends React.Component {
       sizeId: selectedSizeId === '' ? 0 : selectedSizeId * 1,
     };
 
-    const isExists = this.state.combinations.filter((item) => {
+    const isExists = this.props.combinations.filter((item) => {
       const newItem = { ...item };
       delete newItem.quantity;
       return isEqual(newItem, selectedProduct);
@@ -125,37 +76,24 @@ class ProductDetails extends React.Component {
     return false;
   };
 
-  updateLocalStorage = (key) => {
-    //
-  };
-
   addToLocalStorage = (data) => (e) => {
-    // debugger;
-    const {
-      productId,
-      selectedSizeId,
-      selectedColorId,
-      productQuantity,
-      onlyColor,
-      onlySize,
-      noColorAndSize,
-    } = this.state;
+    const { productId, onlyColor, onlySize, noColorAndSize } = this.props;
+    const { selectedSizeId, selectedColorId, productQuantity } = this.state;
 
     if (onlyColor) {
-      if (this.state.selectedColorId === '') {
+      if (selectedColorId === '') {
         this.showAlert('Please Select a Color');
         return;
       }
     } else if (onlySize) {
-      if (this.state.selectedSizeId === '')
-        this.showAlert('Please Select a Size');
+      if (selectedSizeId === '') this.showAlert('Please Select a Size');
     } else if (!noColorAndSize) {
-      if (this.state.selectedColorId === '') {
+      if (selectedColorId === '') {
         this.showAlert('Please Select a Color');
         return;
       }
 
-      if (this.state.selectedSizeId === '') {
+      if (selectedSizeId === '') {
         this.showAlert('Please Select a Size');
         return;
       }
@@ -170,14 +108,14 @@ class ProductDetails extends React.Component {
       productId,
       colorId: selectedColorId === '' ? 0 : selectedColorId * 1,
       sizeId: selectedSizeId === '' ? 0 : selectedSizeId * 1,
-      quantity: productQuantity * 1,
+      quantity: productQuantity,
     };
 
-    if (!localStorage.customer_id) {
-      const cartDataExisting = JSON.parse(localStorage.getItem(data));
+    if (!window.localStorage.customer_id) {
+      const cartDataExisting = JSON.parse(window.localStorage.getItem(data));
 
       if (cartDataExisting && cartDataExisting.length) {
-        localStorage.removeItem(data);
+        window.localStorage.removeItem(data);
         let cardUpdated = false;
 
         const revisedCartData = cartDataExisting.map((item) => {
@@ -196,9 +134,9 @@ class ProductDetails extends React.Component {
         });
 
         if (!cardUpdated) revisedCartData.push(cartObj);
-        localStorage.setItem(data, JSON.stringify(revisedCartData));
+        window.localStorage.setItem(data, JSON.stringify(revisedCartData));
       } else {
-        localStorage.setItem(data, JSON.stringify([{ ...cartObj }]));
+        window.localStorage.setItem(data, JSON.stringify([{ ...cartObj }]));
       }
       let id = '';
       if (data === 'cart') id = 'successCartMessage';
@@ -233,175 +171,6 @@ class ProductDetails extends React.Component {
     }
   };
 
-  addCartDirect = (data) => (e) => {
-    fetch(base + '/api/add_cart_direct', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        productId: this.state.productId,
-        customerId: localStorage.customer_id,
-        quantity: this.state.productQuantity,
-      }),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((response) => {
-        if (response.data === true) {
-          var link = document.getElementById('successCartMessage');
-          link.click();
-        }
-      });
-  };
-
-  addWishLocal = (data) => {
-    console.log({ data });
-
-    /*let wishArr = [
-          { productId: this.state.productId, quantity: this.state.productQuantity }
-        ];
-        let wishDataExisting = JSON.parse(localStorage.getItem("wish"));
-        localStorage.removeItem("wish");
-        if (wishDataExisting) {
-          wishDataExisting.push({
-            productId: this.state.productId,
-            quantity: this.state.productQuantity
-          });
-          localStorage.setItem("wish", JSON.stringify(wishDataExisting));
-        } else {
-          localStorage.setItem("wish", JSON.stringify(wishArr));
-        }
-        var link = document.getElementById("WishListModalButton");
-        link.click();*/
-  };
-
-  addWishDirect() {
-    fetch(base + '/api/add_wish_direct', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        productId: this.state.productId,
-        customerId: localStorage.customer_id,
-        quantity: this.state.productQuantity,
-      }),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((response) => {
-        if (response.data === true) {
-          var link = document.getElementById('WishListModalButton');
-          link.click();
-        }
-      });
-  }
-
-  customerLoginSubmit(event) {
-    event.preventDefault();
-    fetch(base + '/api/loginCustomerInitial', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: event.target.emailField.value,
-        password: event.target.passwordField.value,
-        productId: this.state.productId,
-        quantity: this.state.productQuantity,
-      }),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((response) => {
-        console.log('aa', response);
-        if (response.data !== '') {
-          localStorage.setItem('customer_id', response.data);
-          var link = document.getElementById('successCartMessage');
-          var hide = document.getElementById('hideLogin');
-          hide.click();
-          link.click();
-        }
-      });
-  }
-
-  createAccountNext(event) {
-    event.preventDefault();
-    if (event.target.email.value === '' || event.target.email.value == null) {
-      this.setState({
-        emailError: 'Email cannot be empty',
-      });
-      return false;
-    } else if (
-      !emailPattern.test(event.target.email.value) &&
-      event.target.email.value > 0
-    ) {
-      this.setState({
-        emailError: 'Enter a valid Password',
-      });
-      return false;
-    } else if (
-      event.target.password.value === '' ||
-      event.target.password.value == null
-    ) {
-      this.setState({
-        passwordError: 'Password cannot be empty',
-      });
-      return false;
-    } else {
-      fetch(base + '/api/saveCustomerInitial', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: event.target.email.value,
-          password: event.target.password.value,
-          productId: this.state.productId,
-          quantity: this.state.productQuantity,
-        }),
-      })
-        .then((res) => {
-          return res.json();
-        })
-        .then((response) => {
-          if (response.data !== '') {
-            localStorage.setItem('customer_id', response.data);
-            var hideLogin = document.getElementById('hideLogin');
-            var link = document.getElementById('successCartMessage');
-            hideLogin.click();
-            link.click();
-          }
-        });
-    }
-  }
-
-  selectSizeHandler = (e) => {
-    e.preventDefault();
-    this.setState({ selectedSizeId: e.target.value });
-  };
-
-  selectColorHandler = (e) => {
-    e.preventDefault();
-    this.setState({
-      selectedColorId: e.target.id,
-      selectedColorName: e.target.name,
-    });
-  };
-
-  selectImageHandler = (selectedImage) => (e) => {
-    e.preventDefault();
-    this.setState({ showClickedImage: selectedImage });
-  };
-
   showAlert(text) {
     swal({
       title: 'Warning!',
@@ -416,42 +185,30 @@ class ProductDetails extends React.Component {
     const {
       category_id,
       vendor_id,
-
-      product_id,
       productName,
-      productQuantity,
-
       homeImage,
-      showClickedImage,
-      product_full_description,
+
       carouselImages,
-      qc_status,
-      product_sku,
-      productPrice,
-      metaTags,
 
       colors,
       sizes,
-      onlyColor,
-      onlySize,
-      noColorAndSize,
-      colorAndSize,
 
-      selectedSizeId,
-      selectedColorId,
-      selectedColorName,
-
-      combinations,
-      discountAmount,
       product_list_same_vendor_other_cat,
       product_list_same_category_other_ven,
+    } = this.props;
+
+    const {
+      productQuantity,
+      selectedSizeId,
+      selectedColorName,
+      selectedColorId,
     } = this.state;
 
-    const img_zoom_props = {
+    const props = {
       width: 300,
       height: 200,
       scale: 1.6,
-      img: `${fileUrl}/upload/product/productImages/${this.state.showClickedImage}`,
+      img: `${fileUrl}/upload/product/productImages/${homeImage}`,
       offset: { vertical: 0, horizontal: 10 },
       zoomStyle: { opacity: 1 },
     };
@@ -474,7 +231,7 @@ class ProductDetails extends React.Component {
             <div className="row">
               <div className="col-4 zoomImageDiv" style={{ zIndex: '1000' }}>
                 {/* Zoom Images */}
-                <ReactImageZoom {...img_zoom_props} />
+                <ReactImageZoom {...props} />
 
                 <Carousel
                   // ref={(el) => (this.Carousel = el)}
@@ -485,8 +242,8 @@ class ProductDetails extends React.Component {
                   arrows
                   slidesToSlide={1}
                   // additionalTransfrom={0}
-                  // autoPlay={this.props.deviceType !== 'mobile' ? true : false}
-                  // autoPlaySpeed={3000}
+                  autoPlay={this.props.deviceType !== 'mobile' ? true : false}
+                  autoPlaySpeed={3000}
                   centerMode={false}
                   className=""
                   containerClass="container"
@@ -533,7 +290,11 @@ class ProductDetails extends React.Component {
                           key={item.serialNumber}
                           target="_blank"
                           rel="noopener noreferrer"
-                          onClick={this.selectImageHandler(item.imageName)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            // this.setState({ showClickedImage: item.imageName });
+                            this.setState({ homeImage: item.imageName });
+                          }}
                         >
                           <img
                             className="img-fluid"
@@ -780,15 +541,13 @@ export const getServerSideProps = async ({ params }) => {
   const base = process.env.FRONTEND_SERVER_URL;
   const { id } = params;
 
-  let combinations = await fetcher(
+  let response = await fetcher(
     `${base}/api/productCombinationsFromStock/${id}`
   );
-  combinations = combinations.combinations;
+  const { combinations } = response;
 
-  let discountAmount = await fetcher(
-    `${base}/api/getDiscountByProductId/${id}`
-  );
-  discountAmount = discountAmount.discountAmount;
+  response = await fetcher(`${base}/api/getDiscountByProductId/${id}`);
+  const { discountAmount } = response;
 
   let product_list_same_vendor_other_cat = await fetcher(
     `${base}/api/sameVendorOrCat/${id}/v`
@@ -801,19 +560,6 @@ export const getServerSideProps = async ({ params }) => {
   );
   product_list_same_category_other_ven =
     product_list_same_category_other_ven.sameVendorOrCat;
-
-  // let test = {
-  //   category_id: 4,
-  //   discountAmount: 0,
-  //   home_image: "5_2240x1680.png",
-  //   newProduct: 0,
-  //   productPrice: 500,
-  //   product_id: 1,
-  //   product_name: "Basket",
-  //   product_sku: "BNJ-00027-00001",
-  //   vendor_id: 27
-  // }
-  // product_list_same_category_other_ven.push(test)
 
   const productDetails = await fetcher(`${base}/api/productDetails/${id}`);
   const {
@@ -836,9 +582,8 @@ export const getServerSideProps = async ({ params }) => {
       category_id,
       vendor_id,
 
-      product_id: id,
+      productId: id,
       productName: product_name,
-      productQuantity: 1,
 
       homeImage: !!home_image ? home_image : 'default.png',
       showClickedImage: !!home_image ? home_image : 'default.png',
@@ -855,10 +600,6 @@ export const getServerSideProps = async ({ params }) => {
       onlySize: sizes.length > 0 && colors.length === 0,
       noColorAndSize: colors.length === 0 && sizes.length === 0,
       colorAndSize: colors.length > 0 && sizes.length > 0,
-
-      selectedSizeId: '',
-      selectedColorId: '',
-      selectedColorName: '',
 
       combinations,
       discountAmount,
