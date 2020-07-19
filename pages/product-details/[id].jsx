@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
+import { withRouter } from 'next/router';
 
 import Carousel from 'react-multi-carousel';
 import ReactImageZoom from 'react-image-zoom';
@@ -8,6 +9,8 @@ import BaseLayout from '../../components/layout/base-layout';
 
 import { fetcher } from 'utils/fetcher';
 import SameVendorOrSameCatProducts from '../../components/product-details/SameVendorOrSameCatProducts';
+import { isEqual } from 'lodash';
+import { Router } from 'next/router';
 
 const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
 
@@ -16,15 +19,19 @@ class ProductDetails extends React.Component {
     super(props);
     this.state = {
       ...props,
+      selectedSizeId: '',
+      selectedColorId: '',
+      selectedColorName: '',
     };
 
     this.addWishDirect = this.addWishDirect.bind(this);
     this.addWishLocal = this.addWishLocal.bind(this);
-    this.createAccountNext = this.createAccountNext.bind(this);
-    this.customerLoginSubmit = this.customerLoginSubmit.bind(this);
+    // this.createAccountNext = this.createAccountNext.bind(this);
+    // this.customerLoginSubmit = this.customerLoginSubmit.bind(this);
   }
 
-  handleClickMinus = () => {
+  handleClickMinus = (e) => {
+    e.preventDefault();
     this.setState((prevState) => ({
       productQuantity:
         prevState.productQuantity > 1
@@ -40,6 +47,20 @@ class ProductDetails extends React.Component {
           ? prevState.productQuantity + 1
           : prevState.productQuantity,
     }));
+  };
+
+  selectSizeHandler = (e) => {
+    this.setState({ selectedSizeId: e.target.value }, () =>
+      console.log(this.state.selectedSizeId)
+    );
+  };
+
+  selectColorHandler = (e) => {
+    e.preventDefault();
+    this.setState({
+      selectedColorId: e.target.id,
+      selectedColorName: e.target.name,
+    });
   };
 
   productDescriptions() {
@@ -106,14 +127,17 @@ class ProductDetails extends React.Component {
     const { productId, selectedSizeId, selectedColorId } = this.state;
 
     const selectedProduct = {
-      productId,
+      productId: productId * 1,
       colorId: selectedColorId === '' ? 0 : selectedColorId * 1,
       sizeId: selectedSizeId === '' ? 0 : selectedSizeId * 1,
     };
 
+    console.log({ selectedProduct });
+
     const isExists = this.state.combinations.filter((item) => {
       const newItem = { ...item };
       delete newItem.quantity;
+      console.log({ newItem });
       return isEqual(newItem, selectedProduct);
     });
 
@@ -130,7 +154,6 @@ class ProductDetails extends React.Component {
   };
 
   addToLocalStorage = (data) => (e) => {
-    // debugger;
     const {
       productId,
       selectedSizeId,
@@ -175,6 +198,7 @@ class ProductDetails extends React.Component {
 
     if (!localStorage.customer_id) {
       const cartDataExisting = JSON.parse(localStorage.getItem(data));
+      console.log(cartDataExisting);
 
       if (cartDataExisting && cartDataExisting.length) {
         localStorage.removeItem(data);
@@ -200,11 +224,11 @@ class ProductDetails extends React.Component {
       } else {
         localStorage.setItem(data, JSON.stringify([{ ...cartObj }]));
       }
-      let id = '';
-      if (data === 'cart') id = 'successCartMessage';
-      else if (data === 'wish') id = 'WishListModalButton';
-      var link = document.getElementById(id);
-      link.click();
+      // let id = '';
+      // if (data === 'cart') id = 'successCartMessage';
+      // else if (data === 'wish') id = 'WishListModalButton';
+      // var link = document.getElementById(id);
+      // link.click();
     } else {
       fetch(base + '/api/add_cart_direct', {
         method: 'POST',
@@ -230,6 +254,9 @@ class ProductDetails extends React.Component {
             link.click();
           }
         });
+    }
+    if (data === 'cart') {
+      this.props.router.push('/shopping-cart');
     }
   };
 
@@ -302,101 +329,6 @@ class ProductDetails extends React.Component {
       });
   }
 
-  customerLoginSubmit(event) {
-    event.preventDefault();
-    fetch(base + '/api/loginCustomerInitial', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: event.target.emailField.value,
-        password: event.target.passwordField.value,
-        productId: this.state.productId,
-        quantity: this.state.productQuantity,
-      }),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((response) => {
-        console.log('aa', response);
-        if (response.data !== '') {
-          localStorage.setItem('customer_id', response.data);
-          var link = document.getElementById('successCartMessage');
-          var hide = document.getElementById('hideLogin');
-          hide.click();
-          link.click();
-        }
-      });
-  }
-
-  createAccountNext(event) {
-    event.preventDefault();
-    if (event.target.email.value === '' || event.target.email.value == null) {
-      this.setState({
-        emailError: 'Email cannot be empty',
-      });
-      return false;
-    } else if (
-      !emailPattern.test(event.target.email.value) &&
-      event.target.email.value > 0
-    ) {
-      this.setState({
-        emailError: 'Enter a valid Password',
-      });
-      return false;
-    } else if (
-      event.target.password.value === '' ||
-      event.target.password.value == null
-    ) {
-      this.setState({
-        passwordError: 'Password cannot be empty',
-      });
-      return false;
-    } else {
-      fetch(base + '/api/saveCustomerInitial', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: event.target.email.value,
-          password: event.target.password.value,
-          productId: this.state.productId,
-          quantity: this.state.productQuantity,
-        }),
-      })
-        .then((res) => {
-          return res.json();
-        })
-        .then((response) => {
-          if (response.data !== '') {
-            localStorage.setItem('customer_id', response.data);
-            var hideLogin = document.getElementById('hideLogin');
-            var link = document.getElementById('successCartMessage');
-            hideLogin.click();
-            link.click();
-          }
-        });
-    }
-  }
-
-  selectSizeHandler = (e) => {
-    e.preventDefault();
-    this.setState({ selectedSizeId: e.target.value });
-  };
-
-  selectColorHandler = (e) => {
-    e.preventDefault();
-    this.setState({
-      selectedColorId: e.target.id,
-      selectedColorName: e.target.name,
-    });
-  };
-
   selectImageHandler = (selectedImage) => (e) => {
     e.preventDefault();
     this.setState({ showClickedImage: selectedImage });
@@ -447,7 +379,7 @@ class ProductDetails extends React.Component {
       product_list_same_category_other_ven,
     } = this.state;
 
-    const img_zoom_props = {
+    const props = {
       width: 300,
       height: 200,
       scale: 1.6,
@@ -474,10 +406,10 @@ class ProductDetails extends React.Component {
             <div className="row">
               <div className="col-4 zoomImageDiv" style={{ zIndex: '1000' }}>
                 {/* Zoom Images */}
-                <ReactImageZoom {...img_zoom_props} />
+                <ReactImageZoom {...props} />
 
                 <Carousel
-                  // ref={(el) => (this.Carousel = el)}
+                  ref={(el) => (this.Carousel = el)}
                   additionalTransfrom={-20 * 5}
                   swipeable
                   draggable
@@ -836,7 +768,7 @@ export const getServerSideProps = async ({ params }) => {
       category_id,
       vendor_id,
 
-      product_id: id,
+      productId: id,
       productName: product_name,
       productQuantity: 1,
 
@@ -868,4 +800,4 @@ export const getServerSideProps = async ({ params }) => {
   };
 };
 
-export default ProductDetails;
+export default withRouter(ProductDetails);

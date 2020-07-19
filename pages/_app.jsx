@@ -9,6 +9,7 @@ import 'styles/header.css';
 import 'styles/custom-accordion-styles.css';
 import 'styles/mainCategoryMenu.css';
 import 'styles/product-list.css';
+import 'styles/shopping-cart.css';
 import 'styles/ListingFeaturedCat.css';
 
 function MyApp({ Component, pageProps }) {

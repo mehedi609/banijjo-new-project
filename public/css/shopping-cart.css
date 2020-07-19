@@ -1,54 +1,74 @@
-/*shopping cart page Design*/
-
-.btn-apply{
-	background-color:#009345;
+​ .btn-apply {
+  background-color: #009345;
 }
 
-.btn-place-order{
-	background-color:#EB1C22;
-	border-color:#EB1C22;
-	color: #ffffff;
-	text-align: center;
-	font-size:16px;
-	font-weight:bold;
-
+.btn-place-order {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 4px;
+  opacity: 0.85;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #eb1c22;
+  border: none #eb1c22;
+  color: #ffffff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.btn-primary.btn-place-order:hover{
-	color:#ffffff;
-    background-color: #EB1C22;
+.btn-primary.btn-place-order:hover,
+.btn-primary.btn-place-order:active,
+.btn-primary.btn-place-order:focus {
+  color: #ffffff;
+  background-color: #eb1c22;
+  box-shadow: none;
 }
 
-.btn-continue-shop{
-	background-color:#009345;
-	color:#ffffff;
-	text-align: center;
-	font-size:16px;
-	font-weight:bold;
+.btn-continue-shop {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 4px;
+  opacity: 0.85;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #009345;
+  color: #ffffff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.btn-primary.btn-continue-shop:hover{
-	color:#ffffff;
-    background-color: #009345;
+.btn-primary.btn-continue-shop:hover,
+.btn-primary.btn-continue-shop:active,
+.btn-primary.btn-continue-shop:focus {
+  color: #ffffff;
+  background-color: #009345;
+  box-shadow: none;
 }
 
-.promotion-modal{
- display: none !important;
-}
-.strong-left-subtotal{
-	font-size:14px;
-	font-weight:700;
-}
-.strong-left-vat{
-	font-size: 14px;
-	font-weight: normal;
+.promotion-modal {
+  display: none !important;
 }
 
-.strong-left-discount{
-	font-size:14px;
-	font-style:italic;
+.strong-left-subtotal {
+  font-size: 14px;
+  font-weight: 700;
 }
-.strong-left-order{
-	font-size: 16;
-	font-weight: 700;
+
+.strong-left-vat {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.strong-left-discount {
+  font-size: 14px;
+  font-style: italic;
+}
+.strong-left-order {
+  font-size: 16px;
+  font-weight: 700;
 }
