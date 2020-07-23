@@ -5,14 +5,15 @@ import { withRouter } from 'next/router';
 import Carousel from 'react-multi-carousel';
 import ReactImageZoom from 'react-image-zoom';
 
-import BaseLayout from '../../components/layout/base-layout';
+import BaseLayout from 'components/layout/base-layout';
 
 import { fetcher } from 'utils/fetcher';
-import SameVendorOrSameCatProducts from '../../components/product-details/SameVendorOrSameCatProducts';
+import SameVendorOrSameCatProducts from 'components/product-details/SameVendorOrSameCatProducts';
 import { isEqual } from 'lodash';
-import { Router } from 'next/router';
+import { sweetAlert } from 'utils/sweetalert';
 
 const fileUrl = process.env.NEXT_PUBLIC_FILE_URL;
+const base = process.env.FRONTEND_SERVER_URL;
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -149,10 +150,6 @@ class ProductDetails extends React.Component {
     return false;
   };
 
-  updateLocalStorage = (key) => {
-    //
-  };
-
   addToLocalStorage = (data) => (e) => {
     const {
       productId,
@@ -166,31 +163,30 @@ class ProductDetails extends React.Component {
 
     if (onlyColor) {
       if (this.state.selectedColorId === '') {
-        this.showAlert('Please Select a Color');
+        sweetAlert('Please Select a Color');
         return;
       }
     } else if (onlySize) {
-      if (this.state.selectedSizeId === '')
-        this.showAlert('Please Select a Size');
+      if (this.state.selectedSizeId === '') sweetAlert('Please Select a Size');
     } else if (!noColorAndSize) {
       if (this.state.selectedColorId === '') {
-        this.showAlert('Please Select a Color');
+        sweetAlert('Please Select a Color');
         return;
       }
 
       if (this.state.selectedSizeId === '') {
-        this.showAlert('Please Select a Size');
+        sweetAlert('Please Select a Size');
         return;
       }
     }
 
     if (!this.isSelectedProductExists()) {
-      this.showAlert('Product is Out of Stock!');
+      sweetAlert('Product is Out of Stock!');
       return;
     }
 
     const cartObj = {
-      productId,
+      productId: productId * 1,
       colorId: selectedColorId === '' ? 0 : selectedColorId * 1,
       sizeId: selectedSizeId === '' ? 0 : selectedSizeId * 1,
       quantity: productQuantity * 1,
@@ -224,11 +220,6 @@ class ProductDetails extends React.Component {
       } else {
         localStorage.setItem(data, JSON.stringify([{ ...cartObj }]));
       }
-      // let id = '';
-      // if (data === 'cart') id = 'successCartMessage';
-      // else if (data === 'wish') id = 'WishListModalButton';
-      // var link = document.getElementById(id);
-      // link.click();
     } else {
       fetch(base + '/api/add_cart_direct', {
         method: 'POST',
@@ -334,47 +325,19 @@ class ProductDetails extends React.Component {
     this.setState({ showClickedImage: selectedImage });
   };
 
-  showAlert(text) {
-    swal({
-      title: 'Warning!',
-      text,
-      icon: 'warning',
-      timer: 4000,
-      button: false,
-    });
-  }
-
   render() {
     const {
       category_id,
       vendor_id,
-
-      product_id,
       productName,
-      productQuantity,
-
-      homeImage,
-      showClickedImage,
-      product_full_description,
       carouselImages,
-      qc_status,
-      product_sku,
-      productPrice,
-      metaTags,
 
       colors,
       sizes,
-      onlyColor,
-      onlySize,
-      noColorAndSize,
-      colorAndSize,
 
       selectedSizeId,
-      selectedColorId,
       selectedColorName,
 
-      combinations,
-      discountAmount,
       product_list_same_vendor_other_cat,
       product_list_same_category_other_ven,
     } = this.state;
@@ -395,10 +358,10 @@ class ProductDetails extends React.Component {
           <meta name="description" content="page containing product details" />
           <link rel="stylesheet" href="/css/product-details.css" />
 
-          <script
-            type="text/javascript"
-            src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"
-          ></script>
+          {/*<script*/}
+          {/*  type="text/javascript"*/}
+          {/*  src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"*/}
+          {/*></script>*/}
         </Head>
 
         <div className="container">

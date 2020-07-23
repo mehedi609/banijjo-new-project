@@ -71,7 +71,7 @@ const ListingFeaturedCat = () => {
                                 <span className="featuredcatoneimage_new_label_discount_topSelection">
                                   {calDiscountPercentage(
                                     item.parent.discountAmount,
-                                    item.parent.productPrice,
+                                    item.parent.productPrice
                                   )}
                                   %
                                 </span>
@@ -93,7 +93,7 @@ const ListingFeaturedCat = () => {
                               className="aclass"
                             >
                               {capitalizeStr(
-                                shorten_the_name(item.parent.product_name),
+                                shorten_the_name(item.parent.product_name)
                               )}
                             </a>
                           </h3>
@@ -137,7 +137,7 @@ const ListingFeaturedCat = () => {
                                           <span className="featuredcattwoimage_new_label_discount_topSelection">
                                             {calDiscountPercentage(
                                               product.discountAmount,
-                                              product.productPrice,
+                                              product.productPrice
                                             )}
                                             %
                                           </span>
@@ -146,7 +146,7 @@ const ListingFeaturedCat = () => {
                                           src={`${img_src}${product.home_image}`}
                                           alt={product.product_name}
                                           title={capitalizeStr(
-                                            product.product_name,
+                                            product.product_name
                                           )}
                                         />
                                       </span>
@@ -163,9 +163,7 @@ const ListingFeaturedCat = () => {
                                         className="aclass"
                                       >
                                         {capitalizeStr(
-                                          shorten_the_name(
-                                            product.product_name,
-                                          ),
+                                          shorten_the_name(product.product_name)
                                         )}
                                       </a>
                                     </h3>
@@ -238,7 +236,7 @@ const ListingFeaturedCat = () => {
                               <span className="featuredcatoneimage_new_label_discount_topSelmob">
                                 {calDiscountPercentage(
                                   item.parent.discountAmount,
-                                  item.parent.productPrice,
+                                  item.parent.productPrice
                                 )}
                                 %
                               </span>
@@ -259,7 +257,7 @@ const ListingFeaturedCat = () => {
                               className="aclass"
                             >
                               {capitalizeStr(
-                                shorten_the_name(item.parent.product_name),
+                                shorten_the_name(item.parent.product_name)
                               )}
                             </a>
                           </h3>
@@ -294,7 +292,7 @@ const ListingFeaturedCat = () => {
                                         <span className="featuredcattwoimage_new_label_discount_topSelmob">
                                           {calDiscountPercentage(
                                             product.discountAmount,
-                                            product.productPrice,
+                                            product.productPrice
                                           )}
                                           %
                                         </span>
@@ -303,7 +301,7 @@ const ListingFeaturedCat = () => {
                                         src={`${img_src}${product.home_image}`}
                                         alt={product.product_name}
                                         title={capitalizeStr(
-                                          product.product_name,
+                                          product.product_name
                                         )}
                                       />
                                     </span>
@@ -316,9 +314,7 @@ const ListingFeaturedCat = () => {
                                         className="aclass"
                                       >
                                         {capitalizeStr(
-                                          shorten_the_name(
-                                            product.product_name,
-                                          ),
+                                          shorten_the_name(product.product_name)
                                         )}
                                       </a>
                                     </h3>
@@ -360,7 +356,7 @@ const ListingFeaturedCat = () => {
                   )}
                 </div>
               </Fragment>
-            ),
+            )
         )}
     </Fragment>
   );
@@ -407,7 +403,7 @@ const showingTrees = (tree) => (
                       <span className="featuredcat_new_label_discount_topSelection">
                         {calDiscountPercentage(
                           product.discountAmount,
-                          product.productPrice,
+                          product.productPrice
                         )}
                         %
                       </span>
@@ -480,7 +476,7 @@ const showingTrees2 = (tree) => (
                         <span className="featuredcat_new_label_discount_topSelemob">
                           {calDiscountPercentage(
                             product.discountAmount,
-                            product.productPrice,
+                            product.productPrice
                           )}
                           %
                         </span>

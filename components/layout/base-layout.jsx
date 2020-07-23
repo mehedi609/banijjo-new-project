@@ -2,10 +2,10 @@ import React from 'react';
 import Footer from './footer';
 import Header from './header';
 
-const BaseLayout = ({ children }) => {
+const BaseLayout = ({ children, cartProductsInfo = [] }) => {
   return (
     <>
-      <Header />
+      <Header cartProductsInfo={cartProductsInfo} />
 
       {children}
 

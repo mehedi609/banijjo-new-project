@@ -61,7 +61,7 @@ a.text-primary:hover {
 }
 
 .nav-link-custom::after {
-  content: "|";
+  content: '|';
   color: #009345;
   line-height: 1px;
   padding-left: 4px;
@@ -154,6 +154,41 @@ a.text-primary:hover {
   z-index: 0;
 }
 
+.react-multi-carousel-dot button {
+  border: 2px solid green;
+}
+
+.react-multi-carousel-dot--active button {
+  background-color: red;
+  color: red;
+}
+
 div.zoomImageDiv > div > img:nth-child(1) {
   width: 100% !important;
+}
+
+a {
+  color: #212529;
+}
+
+a:hover {
+  color: #009345;
+}
+
+.card:hover {
+  box-shadow: 0 0 5px #212529;
+}
+
+.card {
+  border-radius: 0;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.vendorCoverImage {
+  min-width: 100%;
+  max-width: 100%;
+  height: 33.33%;
 }

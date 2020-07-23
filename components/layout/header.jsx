@@ -7,8 +7,11 @@ import {
   NavDropdown,
   MenuItem,
 } from 'react-bootstrap';
+import { calculateTotalItems } from '../../utils/utils';
 
-const Header = () => {
+const Header = ({ cartProductsInfo }) => {
+  const totalCartItems = calculateTotalItems(cartProductsInfo);
+
   return (
     <>
       <div className="d-none d-lg-block">
@@ -101,79 +104,6 @@ const Header = () => {
                         </Nav>
                       </Navbar.Collapse>
                     </Navbar>
-
-                    {/*
-                    <ul className="nav">
-                      <li className="nav-item">
-                        <a
-                          className="nav-link nav-link-padding nav-link-custom"
-                          href="#"
-                        >
-                          <i className="fas fa-sign-in-alt pr-1" />
-                          Seller Center
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a
-                          className="nav-link nav-link-padding nav-link-custom"
-                          href="#"
-                        >
-                          <i className="fas fa-rss pr-1" />
-                          Blog
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link nav-link-custom" href="#">
-                          <i className="fas fa-lock pr-1" />
-                          Buyer Protection
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a
-                          className="nav-link nav-link-padding nav-link-custom"
-                          href="#"
-                        >
-                          <i className="far fa-heart pr-1" />
-                          Wish List
-                        </a>
-                      </li>
-                      <li className="nav-item dropdown">
-                        <a
-                          className="nav-link nav-link-padding dropdown-toggle"
-                          href="#"
-                          id="navbarDropdown"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                        >
-                          <i className="far fa-user pr-1" aria-hidden="true" />
-                          Account
-                        </a>
-                        <div
-                          className="dropdown-menu"
-                          aria-labelledby="navbarDropdown"
-                        >
-                          <a className="dropdown-item" href="#">
-                            Action
-                          </a>
-                          <a className="dropdown-item" href="#">
-                            Another action
-                          </a>
-                          <div className="dropdown-divider" />
-                          <a className="dropdown-item" href="#">
-                            Something else here
-                          </a>
-                        </div>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link nav-link-padding" href="#">
-                          {' '}
-                          <img src="/images/bd_small.png" alt="company logo" />
-                        </a>
-                      </li>
-                    </ul>
-                    */}
                   </div>
                 </div>
               </div>
@@ -210,7 +140,7 @@ const Header = () => {
                       className="badge badge-danger rounded-circle ml-n2"
                       style={{ position: 'absolute' }}
                     >
-                      2
+                      {totalCartItems}
                     </span>
                   </a>
                 </div>

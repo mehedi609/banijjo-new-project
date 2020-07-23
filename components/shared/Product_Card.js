@@ -40,7 +40,7 @@ const Product_Card = ({ product }) => {
           <span className="product-new-label-discount-small-carousel">
             {calDiscountPercentage(
               product.discountAmount,
-              product.productPrice,
+              product.productPrice
             )}
             %
           </span>
@@ -55,7 +55,7 @@ const Product_Card = ({ product }) => {
               >
                 <a className="text-primary">
                   {capitalizeStr(
-                    shorten_the_name_upto_six(product.product_name),
+                    shorten_the_name_upto_six(product.product_name)
                   )}
                 </a>
               </AppLink>
